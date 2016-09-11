@@ -1,0 +1,15 @@
+extends layouts/layout
+
+block content
+
+    include partials/navbar
+
+    .container
+
+        h1 Admin
+
+        form
+            .form-group
+                label(for='btn-scrape') Scrape Oles LinkedIn profile
+                br
+                button#btn-scrape.btn.btn-success(type="button") Scrape!

@@ -1,0 +1,36 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+    .container
+        .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+        #navbar.navbar-collapse.collapse
+            if (!user)
+                ul.nav.navbar-nav
+                    li.active
+                        a(href='#profile') Profile
+                    li
+                        a(href='#current-position') Current
+                    li
+                        a(href='#experience') Experience
+                    li
+                        a(href='#education') Education
+                    li
+                        a(href='#projects') Projects
+                    li
+                        a(href='#volounteering') Volounteering
+
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href='login')
+                            | Login
+                        span.sr-only
+
+            else
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href='logout')
+                            | Logout
+                        span.sr-only

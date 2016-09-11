@@ -1,0 +1,97 @@
+// MAIN
+main.col-sm-8.col-md-9.col-sm-height.content
+    .wrapper-inner
+
+        // summary
+        section#profile.well.content__profile
+            h3 Profile
+            blockquote= scrape.summary
+
+        // current position
+        section#current-position.well
+            h3 Current Position
+            .row.row-with-padding
+
+                each exp in scrape.experience
+                    .col-md-12
+                        if exp.currentPosition
+                            a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='danger')
+                                .panel.panel-danger.panel-hover
+                                    .panel-heading
+                                        h3.panel-title= exp.title
+                                    .panel-body
+                                        if exp.company
+                                            p
+                                                strong= exp.company
+                                            if exp.start
+                                                p.text-dimmed
+                                                    em #{exp.start} - #{exp.end}
+
+        // previous experience
+        section#experience.well
+            h3 Experience
+            .row.row-with-padding
+
+                each exp in scrape.experience
+                    .col-md-6
+                        if !exp.currentPosition
+                            a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='primary')
+                                .panel.panel-primary.panel-hover
+                                    .panel-heading
+                                        h3.panel-title= exp.title
+                                    .panel-body
+                                        if exp.company
+                                            p
+                                                strong= exp.company
+                                            if exp.start
+                                                p.text-dimmed
+                                                    em #{exp.start} - #{exp.end}
+
+        // education
+        section#education.well
+            h3 Education
+            .row.row-with-padding
+
+                each edu in scrape.education
+                    .col-md-6
+                        a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=edu, data-panel-type='success')
+                            .panel.panel-success.panel-hover
+                                .panel-heading
+                                    h3.panel-title= edu.degree
+                                .panel-body
+                                    if edu.school
+                                        p
+                                            strong= edu.school
+                                        if edu.start
+                                            p.text-dimmed
+                                                em #{edu.start} - #{edu.end}
+
+        // projects
+        section#projects.well
+            h3 Projects
+            .row.row-with-padding
+
+                if scrape.projects.length > 1
+                    each project in scrape.projects
+                        .col-md-6
+                            include main-project
+                else
+                    each project in scrape.projects
+                        .col-md-12
+                            include main-project
+
+
+
+        // volounteer work
+        section#volounteering.well
+            h3 Volounteering
+            .row.row-with-padding
+                if scrape.volounteering.length > 1
+
+                    each vol in scrape.volounteering
+                        .col-md-6
+                            include main-volounteering
+                else
+                    each vol in scrape.volounteering
+                        .col-md-12
+                            include main-volounteering

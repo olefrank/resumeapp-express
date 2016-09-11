@@ -1,0 +1,8 @@
+a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=project, data-panel-type='warning')
+    .panel.panel-warning.panel-hover
+        .panel-heading
+            h3.panel-title= project.title
+        .panel-body
+            if project.start
+                p.text-dimmed
+                    em #{project.start} - #{project.end}

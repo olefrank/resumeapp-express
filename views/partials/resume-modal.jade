@@ -1,0 +1,25 @@
+#resume-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-label')
+    .modal-dialog(role='document')
+        .modal-content#modal-content
+            .modal-header.panel-heading
+                h3#title.modal-title
+                h3#degree.modal-title
+
+            .modal-body#modal-body
+                p
+                    strong#company
+                p
+                    strong#school
+                p.greyed-out
+                    em
+                        span#start
+                        | -
+                        span#end
+
+                blockquote#description.item-description.br
+
+                h4#courses-heading
+                ul#courses
+
+            .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close

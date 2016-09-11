@@ -1,0 +1,159 @@
+@import '../base';
+
+// ==========================
+// LAYOUT
+// ==========================
+.resume-wrap {
+
+  // air around page if tablet/desktop
+  @media screen and (min-width: @minwidth-tablet) {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  -webkit-box-shadow: -19px 48px 84px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: -19px 48px 84px 2px rgba(0,0,0,0.75);
+  box-shadow: -19px 48px 84px 2px rgba(0,0,0,0.75);
+}
+
+.wrapper-inner {
+  padding: 10px;
+}
+
+// sidebar area
+.sidebar {
+  background-color: @color-grey-dark1;
+  text-align: center;
+  color: @color-white;
+  padding-top: 42px;
+
+  .sidebar__skills {
+    display: none;
+
+    @media screen and (min-width: @minwidth-tablet) {
+      display: block;
+    }
+
+    // button to collapse skills section
+    a {
+      color: @panel-info-heading-bg;
+      padding: 5px 15px;
+      border: 1px solid #666;
+      border-radius: 4px;
+    }
+    a:hover {
+      background-color: @color-grey-dark2;
+    }
+
+    // remove space between skills / collapsed skills
+    ul:first-of-type {
+      margin-top: -1px;
+      margin-bottom: 0;
+    }
+  }
+
+  .sidebar__profile {
+    background-color: transparent;
+    border: none;
+
+    @media screen and (min-width: @minwidth-tablet) {
+      display: none;
+    }
+  }
+
+  .sidebar__languages {
+    display: none;
+
+    @media screen and (min-widght: @minwidth-tablet) {
+      display: blocK;
+    }
+  }
+
+  .section {
+    margin-top: 60px;
+  }
+
+  .sidebar-list-item {
+    background-color: transparent;
+    color: @color-grey-medium2;
+    border: hidden;
+  }
+
+  blockquote {
+    color: @color-grey-medium1;
+    background: transparent;
+    border: none;
+  }
+  blockquote:before {
+    color: @color-grey-medium1;
+  }
+
+  h3 {
+    color: @color-grey-light;
+  }
+}
+
+// content area
+.content {
+  background-color: @color-grey-light;
+
+  .content__profile {
+    display: none;
+
+    @media screen and (min-width: @minwidth-tablet) {
+      display: block;
+    }
+  }
+
+  blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid @color-grey-medium1;
+  }
+  blockquote:before {
+    color: @color-grey-medium1;
+  }
+
+}
+
+
+// ==========================
+// ELEMENTS
+// ==========================
+// profile photo
+.my-picture {
+  width: 160px;
+  padding: 7px;
+  border: 4px solid @color-grey-medium1;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 80px;
+}
+
+// Block Quote general styling
+blockquote {
+  font-size: 1.2em;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D";
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+blockquote:before {
+  content: open-quote;
+  font-size: 4em;
+  font-style: normal;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+// drop shadow when hovering panels
+.panel-hover {
+  transition: box-shadow .1s ease-out;
+}
+.panel-hover:hover {
+  box-shadow: 4px 4px 10px 0px rgba(102,102,102,1);
+  transition: box-shadow .1s ease-out;
+}

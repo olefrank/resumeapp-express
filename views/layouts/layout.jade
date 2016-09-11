@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title= title
+    include ../partials/stylesheets
+
+  body(data-spy='scroll', data-target='.navbar', data-offset='70')
+
+    block content
+
+    include ../partials/scripts
+    include ../partials/resume-modal

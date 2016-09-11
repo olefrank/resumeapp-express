@@ -1,0 +1,39 @@
+// SIDEBAR
+
+aside.col-sm-4.col-md-3.col-sm-height.sidebar
+    .wrapper-inner
+        // profile
+        img.my-picture(src='images/ole_frank_jensen_portrait_400x400.jpg', alt='A picture of me!')
+        h3.my-name= scrape.profile.name
+        p.my-title.text-dimmed Web Developer
+
+        include contact-me
+
+        //// summary
+        //section.well.sidebar__profile
+        //    h3 Profile
+        //    blockquote.br(ng-bind-html='scrape.summary | linky')
+
+        ul.list-group
+            each skill, i in scrape.skills
+                if i < 10
+                    li.list-group-item.sidebar-list-item= skill.title
+
+        #collapseExample.collapse
+            ul.list-group.list-skills-expanded
+                each skill, i in scrape.skills
+                    if i >= 10
+                        li.list-group-item.sidebar-list-item= skill.title
+
+        button#btn-skills-more.btn.btn-primary.btn-skills(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+            i.fa.fa-chevron-down
+
+        button#btn-skills-less.btn.btn-primary.btn-skills.hidden(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+            i.fa.fa-chevron-up
+
+        // languages
+        section.section.sidebar__languages.hidden
+            h4.text-info My languages
+            ul.list-group
+                each lang, i in scrape.languages
+                    li.list-group-item.sidebar-list-item= lang.lang

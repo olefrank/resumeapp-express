@@ -1,0 +1,145 @@
+// ==========================
+// BASE
+// ==========================
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+img {
+  max-width: 100%;
+}
+
+
+// ==========================
+// MISC
+// ==========================
+// fix bug: bootstrap modal makes page jump with scrollbar
+.modal {
+  overflow-y: auto;
+}
+.modal-open {
+  overflow: auto;
+}
+
+
+// ==========================
+// WIDTHS
+// ==========================
+@minwidth-phone: 320px;
+@minwidth-tablet: 768px;
+
+
+// ==========================
+// COLORS
+// ==========================
+@color-black: #000000;
+@color-grey-dark1: #333333;
+@color-grey-dark2: #666666;
+@color-grey-medium1: #999999;
+@color-grey-medium2: #cccccc;
+@color-grey-light: #eeeeee;
+@color-white: #fff;
+
+// panel colors
+@panel-primary-border: #005B78;
+@panel-primary-text: #ffffff;
+@panel-primary-heading-bg: #004a61;
+
+@panel-success-border: #00999C;
+@panel-success-text: #fff;
+@panel-success-heading-bg: #008789;
+
+@panel-info-border: #FC5149;
+@panel-info-text: #ffffff;
+@panel-info-heading-bg: #fc4349;
+
+@panel-warning-border: #DBA519;
+@panel-warning-text: #ffffff;
+@panel-warning-heading-bg: #C49417;
+
+@panel-danger-border: #525252;
+@panel-danger-text: #ffffff;
+@panel-danger-heading-bg: #444444;
+
+// modals
+.modal-header-primary {
+  border-color: @panel-primary-border;
+  background-color: @panel-primary-heading-bg;
+  color: @panel-primary-text;
+}
+.modal-header-success {
+  border-color: @panel-success-border;
+  background-color: @panel-success-heading-bg;
+  color: @panel-success-text;
+}
+.modal-header-info {
+  border-color: @panel-info-border;
+  background-color: @panel-info-heading-bg;
+  color: @panel-info-text;
+}
+.modal-header-warning {
+  border-color: @panel-warning-border;
+  background-color: @panel-warning-heading-bg;
+  color: @panel-warning-text;
+}
+.modal-header-danger {
+  border-color: @panel-danger-border;
+  background-color: @panel-danger-heading-bg;
+  color: @panel-danger-text;
+}
+
+.text-dimmed {
+  color: @color-grey-medium1;
+}
+.text-success {
+  color: @panel-success-heading-bg;
+}
+.text-warning {
+  color: @panel-warning-heading-bg;
+}
+.text-info {
+  color: @panel-info-heading-bg;
+}
+
+
+// ==========================
+// UTILS
+// ==========================
+
+// remove padding between columns in a row
+.row-no-padding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+// re-add padding to nested row where parent has no padding
+.row-with-padding {
+  [class*="col-"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+// remove white space
+.br {
+  white-space: pre-wrap;
+}
+
+// 100% height of custom div inside column
+.row{
+  overflow: hidden;
+}
+[class*="col-"]{
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+// hide links
+//.hide-link,
+//.hide-link:hover {
+//  color: @color-black;
+//  -webkit-tap-highlight-color: rgba(204,204,204,0.8);
+//  cursor: pointer;
+//  text-decoration: none;
+//}

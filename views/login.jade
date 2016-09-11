@@ -1,0 +1,26 @@
+extends layouts/layout
+
+block content
+
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        h1 Login
+
+        // show any messages that come back with authentication
+        if message.length > 0
+          .alert.alert-danger= message
+
+        // LOGIN FORM
+        form(action='/login', method='post')
+          .form-group
+            label Email
+            input.form-control(name='email', autofocus)
+
+          .form-group
+            label Password
+            input.form-control(name='password', type='password')
+
+          button.btn.btn-warning.btn-lg(type='submit') Login
+
+        hr

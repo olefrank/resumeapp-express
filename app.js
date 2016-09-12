@@ -18,7 +18,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // static routes
 app.use('/lib/bootstrap', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/')));
@@ -27,7 +27,7 @@ app.use('/lib/font-awesome', express.static(path.join(__dirname,'/node_modules/f
 
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(morgan('dev'));
 //app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

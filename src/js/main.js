@@ -22,9 +22,6 @@ $(function() {
             $('.active').removeClass('active');
             target.parent().addClass('active');
 
-            // update url
-            history.pushState(null, null, this.hash);
-
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
             if (target.length) {
                 $('html, body').animate({

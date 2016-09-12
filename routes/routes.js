@@ -38,7 +38,6 @@ module.exports = function(app, passport) {
 
 
 
-    // ofj: comment in to be able to create users in db
     // =====================================
     // SIGNUP ==============================
     // =====================================
@@ -50,6 +49,7 @@ module.exports = function(app, passport) {
     //});
     //
     //// process the signup form
+    // ofj: uncomment this to be able to create users in db
     //app.post('/signup', passport.authenticate('local-signup', {
     //    successRedirect : '/login', // redirect to the secure profile section
     //    failureRedirect : '/login', // redirect back to the signup page if there is an error

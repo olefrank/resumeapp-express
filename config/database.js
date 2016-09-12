@@ -1,5 +1,5 @@
 module.exports = {
 
-    'url' : 'mongodb://localhost/olefrank-resume'
+    'url' : 'mongodb://localhost:27017/resume-olefrank-dk'
 
 };

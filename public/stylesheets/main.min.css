@@ -1,7 +1,3 @@
-/**
- *  Import files
- */
-
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -68,14 +64,6 @@ img {
 [class*="col-"] {
   margin-bottom: -99999px;
   padding-bottom: 99999px;
-}
-
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-a {
-  color: #00B7FF;
 }
 
 body {
@@ -287,12 +275,12 @@ img {
   margin-bottom: -99999px;
   padding-bottom: 99999px;
 }
-.contact-me a {
+.contact-me-link {
   font-size: 1.6em;
   display: inline-block;
   height: 1.6em;
   width: 1.6em;
-  padding: 0 25px;
+  padding: 0 16px;
 }
 .contact-me a:first-of-type {
   padding: 0;

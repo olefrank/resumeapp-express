@@ -494,6 +494,28 @@ body {
   border: 0 #eee solid;
   border-right-width: 4px;
 }
+#profile p:not(:first-of-type) {
+  display: block;
+}
+#profile p:nth-of-type(2) {
+  margin-top: 10px;
+}
+#profile blockquote {
+  max-height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+#profile blockquote .read-more {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 30px 0;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+  background-image: linear-gradient(to bottom, transparent, white);
+}
 
 .navbar-fixed-top {
   top: 0;

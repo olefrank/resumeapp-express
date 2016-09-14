@@ -2,7 +2,6 @@
     "_id":{
       "$oid":"55741071cd95a94c2513b1b3"
     },
-    "summary-old":"I am exited about new technology in general - and modern, open web standards in particular. I like tools that don't get in my way! Like AngularJS, NodeJS, Grunt, Bower, Webstorm, TypeScript, GitHub and TeamCity among others!<br><br>As a developer I focus on quality and best practice. I like giving attention to details. I am constantly seeking new patterns and ways of doing things smarter. Code should be easy to maintain, scalable and performant. UX should feel right and look good.<br><br>I have a lot of diverse experience in my life. Teaching, developing software, playing music, managing teams... I like to categorize and simplify complex stuff so it is easier to understand. I use this skill in practically everything I do.<br><br>Check out my repo at <a href='https://github.com/olefrank'>https://github.com/olefrank</a>",
     "summary": "<p>I am exited about new technology in general - and modern, open web standards in particular. I like tools that don't get in my way! These days it's AngularJS, NodeJS, Grunt, Bower, Webstorm, TypeScript, GitHub and TeamCity among others!</p><p>As a developer I focus on quality and best practice. I like giving attention to details. I am constantly seeking new ways of doing things smarter. Code should be easy to maintain, scalable and performant. UX should feel right and look good.</p><p>I am one of those (few) developers with excellent people skills! Maybe because I have done a lot of different stuff in my life: like teaching, developing software, playing music, managing teams, bartending... I like to categorize and simplify complex stuff to make it easier to understand. I use this skill in practically everything I do.</p><p>Check out some projects at <a href='https://github.com/olefrank'>https://github.com/olefrank</a></p>",
     "skills":[
       {
@@ -301,14 +300,27 @@
     ],
     "experience":[
       {
+        "title":"Frontend/node.js Developer",
+        "logoUrl":"https://media.licdn.com/media/p/1/005/019/088/1f56be1.png",
+        "company":"Danmarks Radio",
+        "locality":"Denmark",
+        "start":"September 2015",
+        "end":"",
+        "description":"Frontend / node.js developer at one of Denmarks busiest sites. Mostly smaller express.js apps (song contest application, voting) and internal managing tools. Styling and site building in Drupal (x factor, roskilde festival etc).",
+        "currentPosition":true,
+        "_id":{
+          "$oid":"55741071cd95a94c2513b1e3"
+        }
+      },
+      {
         "title":"Digital Business Developer",
         "logoUrl":"https://media.licdn.com/media/p/4/005/046/10d/2a01c31.png",
         "company":"JP/Politikens Hus A/S",
         "locality":"Denmark",
         "start":"August 2013",
-        "end":"",
+        "end":"September 2015",
         "description":"Full Stack developer on various projects for Denmarks largest News Media Corporation. Mainly working with JavaScript frontends and Java backends.",
-        "currentPosition":true,
+        "currentPosition":false,
         "_id":{
           "$oid":"55741071cd95a94c2513b1d9"
         }

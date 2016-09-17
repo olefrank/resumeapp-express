@@ -1,0 +1,103 @@
+{
+  "buttons": {
+
+    "close": {
+      "da": "Luk",
+      "en": "Close"
+    },
+    "read_more": {
+      "da": "Læs mere",
+      "en": "Read more"
+    }
+
+  },
+
+  "navbar": [
+    {
+      "name": {
+        "da": "Profil",
+        "en": "Profile"
+      },
+      "link": "#profile"
+    },
+    {
+      "name": {
+        "da": "Nuværende",
+        "en": "Current"
+      },
+      "link": "#current-position"
+    },
+    {
+      "name": {
+        "da": "Erfaring",
+        "en": "Experience"
+      },
+      "link": "#experience"
+    },
+    {
+      "name": {
+        "da": "Uddannelse",
+        "en": "Education"
+      },
+      "link": "#education"
+    },
+    {
+      "name": {
+        "da": "Projekter",
+        "en": "Projects"
+      },
+      "link": "#projects"
+    },
+    {
+      "name": {
+        "da": "Frivillig",
+        "en": "Volounteering"
+      },
+      "link": "#volounteering"
+    }
+  ],
+
+  "headings": {
+
+    "profile": {
+      "da": "Profil",
+      "en": "Profile"
+    },
+    "current": {
+      "da": "Nuværende",
+      "en": "Current Position"
+    },
+    "experience": {
+      "da": "Erfaring",
+      "en": "Experience"
+    },
+    "education": {
+      "da": "Uddannelse",
+      "en": "Education"
+    },
+    "projects": {
+      "da": "Projekter",
+      "en": "Projects"
+    },
+    "volounteering": {
+      "da": "Frivilligt arbejde",
+      "en": "Volounteering"
+    },
+    "title": {
+      "da": "Web udvikler",
+      "en": "Web Developer"
+    },
+    "contact": {
+      "da": "Find mig her",
+      "en": "Find me here"
+    },
+    "skills": {
+      "da": "Mine skills",
+      "en": "My skills"
+    },
+    "languages": {
+      "da": "Sprog",
+      "en": "Languages"
+    }
+  }
+}

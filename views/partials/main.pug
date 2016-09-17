@@ -4,17 +4,16 @@ main.col-sm-8.col-md-9.col-sm-height.content
 
         // summary
         section#profile.well.content__profile
-            h3 Profile
-            blockquote !{scrape.summary}
+            h3= strings.headings.profile
+            blockquote !{resume.summary}
                 p.read-more
-                    button.btn.btn-default(href="#") Read More...
 
         // current position
         section#current-position.well
-            h3 Current Position
+            h3= strings.headings.current
             .row.row-with-padding
 
-                each exp in scrape.experience
+                each exp in resume.experience
                     .col-md-12
                         if exp.currentPosition
                             a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='danger')
@@ -27,14 +26,18 @@ main.col-sm-8.col-md-9.col-sm-height.content
                                                 strong= exp.company
                                             if exp.start
                                                 p.text-dimmed
-                                                    em #{exp.start} - #{exp.end}
+                                                    em= moment(exp.start).format('MMMM YYYY')
+                                                    |  -
+                                                    if (exp.end)
+                                                        em= moment(exp.end).format('MMMM YYYY')
+
 
         // previous experience
         section#experience.well
-            h3 Experience
+            h3= strings.headings.experience
             .row.row-with-padding
 
-                each exp in scrape.experience
+                each exp in resume.experience
                     .col-md-6
                         if !exp.currentPosition
                             a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='primary')
@@ -47,14 +50,17 @@ main.col-sm-8.col-md-9.col-sm-height.content
                                                 strong= exp.company
                                             if exp.start
                                                 p.text-dimmed
-                                                    em #{exp.start} - #{exp.end}
+                                                    em= moment(exp.start).format('MMMM YYYY')
+                                                    |  -
+                                                    if (exp.end)
+                                                        em= moment(exp.end).format('MMMM YYYY')
 
         // education
         section#education.well
-            h3 Education
+            h3= strings.headings.education
             .row.row-with-padding
 
-                each edu in scrape.education
+                each edu in resume.education
                     .col-md-6
                         a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=edu, data-panel-type='success')
                             .panel.panel-success.panel-hover
@@ -66,34 +72,35 @@ main.col-sm-8.col-md-9.col-sm-height.content
                                             strong= edu.school
                                         if edu.start
                                             p.text-dimmed
-                                                em #{edu.start} - #{edu.end}
+                                                em= moment(edu.start).format('MMMM YYYY')
+                                                |  -
+                                                if (edu.end)
+                                                    em= moment(edu.end).format('MMMM YYYY')
 
         // projects
         section#projects.well
-            h3 Projects
+            h3= strings.headings.projects
             .row.row-with-padding
 
-                if scrape.projects.length > 1
-                    each project in scrape.projects
+                if resume.projects.length > 1
+                    each project in resume.projects
                         .col-md-6
-                            include main-project
+                            include panels/panel-project
                 else
-                    each project in scrape.projects
+                    each project in resume.projects
                         .col-md-12
-                            include main-project
-
-
+                            include panels/panel-project
 
         // volounteer work
         section#volounteering.well
-            h3 Volounteering
+            h3= strings.headings.volounteering
             .row.row-with-padding
-                if scrape.volounteering.length > 1
+                if resume.volounteering.length > 1
 
-                    each vol in scrape.volounteering
+                    each vol in resume.volounteering
                         .col-md-6
-                            include main-volounteering
+                            include panels/panel-volounteering
                 else
-                    each vol in scrape.volounteering
+                    each vol in resume.volounteering
                         .col-md-12
-                            include main-volounteering
+                            include panels/panel-volounteering

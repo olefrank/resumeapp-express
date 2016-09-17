@@ -5,4 +5,7 @@ a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=pr
         .panel-body
             if project.start
                 p.text-dimmed
-                    em #{project.start} - #{project.end}
+                    em= moment(project.start).format('MMMM YYYY')
+                    |  -
+                    if (project.end)
+                        em= moment(project.end).format('MMMM YYYY')

@@ -1,9 +1,10 @@
+const appconfig = require('./config/app.config');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+const moment = require('moment');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -13,8 +14,9 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url); // connect to our database
 require('./config/passport')(passport); // pass passport for configuration
 
-
 var app = express();
+
+app.locals.moment = moment;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +26,7 @@ app.set('view engine', 'pug');
 app.use('/lib/bootstrap', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/')));
 app.use('/lib/jquery', express.static(path.join(__dirname,'/node_modules/jquery/dist')));
 app.use('/lib/font-awesome', express.static(path.join(__dirname,'/node_modules/font-awesome/')));
+app.use('/lib/moment', express.static(path.join(__dirname,'/node_modules/moment/')));
 
 
 // uncomment after placing your favicon in /public
@@ -40,6 +43,7 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
 
 
 require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport

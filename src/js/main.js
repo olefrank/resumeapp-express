@@ -2,15 +2,16 @@
 
 // skills click handler
 $(function() {
-    var btnSkillsMore = $('#btn-skills-more');
-    var btnSkillsLess = $('#btn-skills-less');
-    var skillsClickHandler = function(e) {
-        btnSkillsMore.toggleClass('hidden');
-        btnSkillsLess.toggleClass('hidden');
+    var btnArr = [];
+    btnArr.push( $('#btn-skills-more') );
+    btnArr.push( $('#btn-skills-less') );
+    var skillsClickHandler = function() {
+        btnArr.forEach( function(btn) { btn.toggleClass('hidden') } );
     };
-    btnSkillsMore.on('click', skillsClickHandler);
-    btnSkillsLess.on('click', skillsClickHandler);
+    btnArr.forEach( function(btn) { btn.on('click', skillsClickHandler); } );
 });
+
+
 
 // smooth scroll to anchor
 $(function() {
@@ -32,6 +33,8 @@ $(function() {
         }
     });
 });
+
+
 
 // modal
 $(function() {
@@ -71,50 +74,56 @@ $(function() {
         if (exp.description) modalBody.find('#description').text(exp.description).show();
         else modalBody.find('#description').hide();
 
-        if (exp.start) modalBody.find('#start').text(exp.start).show();
+        if (exp.start) modalBody.find('#start').text(moment(exp.start).format('MMMM YYYY')).show();
         else modalBody.find('#start').hide();
 
-        if (exp.end) modalBody.find('#end').text(exp.end).show();
+        if (exp.end) modalBody.find('#end').text(moment(exp.end).format('MMMM YYYY')).show();
         else modalBody.find('#end').hide();
     });
 });
 
-// ofj: kill modal on close
+
+
+// kill modal on close
 $('body').on('hidden.bs.modal', '.modal', function () {
     $(this).removeData('bs.modal');
 });
+
+
 
 // 'read more' slide down
 $(function() {
 
     var $el, $p, $ps, $up, totalHeight;
 
-    $("#profile .btn").on('click', function() {
+    $("#profile .read-more").on('click', function() {
 
         totalHeight = 0;
 
         $el = $(this);
         $p  = $el.parent();
-        $up = $p.parent();
-        $ps = $up.find("p:not('.read-more')");
+        //$up = $p.parent();
+        //$ps = $p.find("p:not('.read-more')");
+        $ps = $p.find("p");
 
         // measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
         $ps.each(function() {
             totalHeight += $(this).outerHeight();
         });
 
-        $up
-            .css({
-                // Set height to prev   ent instant jumpdown when max height is removed
-                "height": $up.height(),
+        $p.css({
+                // Set height to prevent instant jumpdown when max height is removed
+                "height": $p.height(),
                 "max-height": 9999
             })
             .animate({
                 "height": totalHeight
-            },600);
+            },400);
 
         // fade out read-more
-        $p.fadeOut();
+        //$p.fadeOut();
+        //$el.css({"display": "none"});
+        $el.fadeOut();
 
         // prevent jump-down
         return false;

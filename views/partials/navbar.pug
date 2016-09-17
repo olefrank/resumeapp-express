@@ -9,24 +9,13 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         #navbar.navbar-collapse.collapse
             if (!user)
                 ul.nav.navbar-nav
-                    li.active
-                        a(href='#profile') Profile
-                    li
-                        a(href='#current-position') Current
-                    li
-                        a(href='#experience') Experience
-                    li
-                        a(href='#education') Education
-                    li
-                        a(href='#projects') Projects
-                    li
-                        a(href='#volounteering') Volounteering
+
+                    each item in strings.navbar
+                        li.active
+                            a(href=item.link)= item.name
 
                 ul.nav.navbar-nav.navbar-right
-                    li
-                        a(href='login')
-                            | Login
-                        span.sr-only
+                    include lang
 
             else
                 ul.nav.navbar-nav.navbar-right

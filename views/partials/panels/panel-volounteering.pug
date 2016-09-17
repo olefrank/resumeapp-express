@@ -6,6 +6,9 @@ a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=vo
             if vol.company
                 p
                     strong= vol.company
-                if vol.start
-                    p.text-dimmed
-                        em #{vol.start} - #{vol.end}
+            if vol.start
+                p.text-dimmed
+                    em= moment(vol.start).format('MMMM YYYY')
+                    |  -
+                    if (vol.end)
+                        em= moment(vol.end).format('MMMM YYYY')

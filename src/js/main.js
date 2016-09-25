@@ -62,14 +62,14 @@ $(function() {
         if (exp.title) modalContent.find('#title').text(exp.title).show();
         else modalContent.find('#title').hide();
 
-        if (exp.degree) modalContent.find('#degree').text(exp.degree).show();
-        else modalContent.find('#degree').hide();
+        //if (exp.degree) modalContent.find('#degree').text(exp.degree).show();
+        //else modalContent.find('#degree').hide();
 
-        if (exp.company) modalBody.find('#company').text(exp.company).show();
+        if (exp.company) modalBody.find('#company').text(exp.company.name).show();
         else modalBody.find('#company').hide();
 
-        if (exp.school) modalBody.find('#school').text(exp.school).show();
-        else modalBody.find('#school').hide();
+        //if (exp.school) modalBody.find('#school').text(exp.school).show();
+        //else modalBody.find('#school').hide();
 
         if (exp.description) modalBody.find('#description').text(exp.description).show();
         else modalBody.find('#description').hide();
@@ -97,13 +97,10 @@ $(function() {
     var $el, $p, $ps, $up, totalHeight;
 
     $("#profile .read-more").on('click', function() {
-
         totalHeight = 0;
 
         $el = $(this);
         $p  = $el.parent();
-        //$up = $p.parent();
-        //$ps = $p.find("p:not('.read-more')");
         $ps = $p.find("p");
 
         // measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
@@ -121,13 +118,91 @@ $(function() {
             },400);
 
         // fade out read-more
-        //$p.fadeOut();
-        //$el.css({"display": "none"});
-        $el.fadeOut();
+        $el.css({"display": "none"});
 
         // prevent jump-down
         return false;
 
     });
+
+});
+
+
+// admin: post data
+$(function() {
+    $('.btn-admin-save').on('click', btnSaveHandler);
+
+    function btnSaveHandler(e) {
+        e.preventDefault();
+
+        // get section of data to save
+        var section = $(this).data('section');
+        var id = $(this).data('id');
+
+        // get data from relevant fields
+        var data = getData(section, id);
+
+        // post data to endpoint
+        $.ajax({
+            method: "POST",
+            url: "/admin",
+            data: data,
+            contentType: 'application/json'
+        }).done(function(data, textStatus, jqXHR) {
+            toastr.success(data);
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            toastr.error(jqXHR.responseText);
+        });
+    }
+
+
+    function getData(section, id) {
+        var data = {_id: id, section: section};
+        var query = "[data-id='" + id + "'][data-section='" + section + "'][data-type='resume-form-field']";
+        var item;
+
+        $( query ).each(function() {
+            item = $(this)[0];
+            var path = item.dataset.prop;
+            var val = item.innerHTML || item.checked || item.value;
+            set(data, path, val);
+        });
+
+        return JSON.stringify(data);
+    }
+
+    function set(obj, path, value) {
+        var schema = obj;  // a moving reference to internal objects within obj
+        var arr = path.split('.');
+        var len = arr.length;
+
+        // ofj: virker ikke - hvorfor SO?
+        //arr.forEach(function(elem) {
+        //    if ( !schema[elem] ) {
+        //        schema[elem] = {};
+        //    }
+        //    schema = schema[elem];
+        //});
+        //schema[a  rr[len - 1]] = value;
+        //return schema;
+
+        for(var i = 0; i < len-1; i++) {
+            var elem = arr[i];
+            if( !schema[elem] ) schema[elem] = {};
+            schema = schema[elem];
+        }
+        schema[arr[len-1]] = value;
+        return schema;
+    }
+});
+
+
+// admin tabs
+$(function() {
+
+    $('#admin-tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
 
 });

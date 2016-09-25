@@ -8,6 +8,7 @@ const moment = require('moment');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var toastr    = require('express-toastr');
 var morgan       = require('morgan');
 var session      = require('express-session');
 var configDB = require('./config/database.js');
@@ -27,23 +28,21 @@ app.use('/lib/bootstrap', express.static(path.join(__dirname,'/node_modules/boot
 app.use('/lib/jquery', express.static(path.join(__dirname,'/node_modules/jquery/dist')));
 app.use('/lib/font-awesome', express.static(path.join(__dirname,'/node_modules/font-awesome/')));
 app.use('/lib/moment', express.static(path.join(__dirname,'/node_modules/moment/')));
-
+app.use('/lib/toastr', express.static(path.join(__dirname,'/node_modules/toastr/build/')));
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(morgan('dev'));
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: appconfig.session.secret })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-
 
 
 require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
@@ -56,29 +55,35 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
+// error handler
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+  res.send(err.message);
 });
+
+//// development error handler
+//// will print stacktrace
+//if (app.get('env') === 'development') {
+//  app.use(function(err, req, res, next) {
+//    res.status(err.status || 500);
+//    res.send(err.message);
+//    //res.render('error', {
+//    //  message: err.message,
+//    //  error: err
+//    //});
+//  });
+//}
+//
+//// production error handler
+//// no stacktraces leaked to user
+//app.use(function(err, req, res, next) {
+//  res.status(err.status || 500);
+//  res.send(err.message);
+//  //res.render('error', {
+//  //  message: err.message,
+//  //  error: {}
+//  //});
+//});
 
 
 module.exports = app;

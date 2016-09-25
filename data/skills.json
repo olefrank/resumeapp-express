@@ -1,0 +1,149 @@
+[
+  {
+    "title": {
+      "da": "Web udvikling",
+      "en": "Web Development"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "AngularJS",
+      "en": "AngularJS"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Node.js",
+      "en": "Node.js"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "JavaScript",
+      "en": "JavaScript"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "GulpJS",
+      "en": "GulpJS"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Cloud Computing",
+      "en": "Cloud Computing"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "LESS",
+      "en": "LESS"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Twitter Bootstrap",
+      "en": "Twitter Bootstrap"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Java",
+      "en": "Java"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "SQL",
+      "en": "SQL"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Linux Server",
+      "en": "Linux Server"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "PHP",
+      "en": "PHP"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Git",
+      "en": "Git"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Tortoise SVN",
+      "en": "Tortoise SVN"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "RESTful architecture",
+      "en": "RESTful architecture"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Android SDK",
+      "en": "Android SDK"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "UML",
+      "en": "UML"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Web Analytics",
+      "en": "Web Analytics"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "SCRUM",
+      "en": "SCRUM"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "JIRA",
+      "en": "JIRA"
+    },
+    "rating": 5
+  },
+  {
+    "title": {
+      "da": "Musikundervisning",
+      "en": "Music Education"
+    },
+    "rating": 5
+  }
+]

@@ -1,0 +1,31 @@
+if isAdmin
+    a.resume-component(data-component-type='education', data-component-data=educations_raw[index])
+        .panel.panel-success.panel-hover
+            .panel-heading
+                h3.panel-title= edu.title
+            .panel-body
+                if edu.company
+                    p
+                        strong= edu.company.name
+                    if edu.start
+                        p.text-dimmed
+                            em= moment(edu.start).format('MMMM YYYY')
+                            |  -
+                            if (edu.end)
+                                em= moment(edu.end).format('MMMM YYYY')
+
+else
+    a(data-toggle='modal', data-target='#resume-modal', data-modal-data=edu, data-panel-type='success')
+        .panel.panel-success.panel-hover
+            .panel-heading
+                h3.panel-title= edu.title
+            .panel-body
+                if edu.company
+                    p
+                        strong= edu.company.name
+                    if edu.start
+                        p.text-dimmed
+                            em= moment(edu.start).format('MMMM YYYY')
+                            |  -
+                            if (edu.end)
+                                em= moment(edu.end).format('MMMM YYYY')

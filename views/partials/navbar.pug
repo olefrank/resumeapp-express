@@ -10,9 +10,14 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             if (!user)
                 ul.nav.navbar-nav
 
-                    each item in strings.navbar
-                        li.active
-                            a(href=item.link)= item.name
+                    // create menu
+                    each item, index in strings.navbar
+                        if (index === 0)
+                            li.active
+                                a(href=item.link)= item.name
+                        else
+                            li
+                                a(href=item.link)= item.name
 
                 ul.nav.navbar-nav.navbar-right
                     include lang

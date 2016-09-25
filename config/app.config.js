@@ -3,5 +3,8 @@ module.exports = {
         locale: {
             name: 'olefrank-resume'
         }
+    },
+    session: {
+        secret: "olebolegikiskole"
     }
 };

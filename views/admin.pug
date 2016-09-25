@@ -2,14 +2,72 @@ extends layouts/layout
 
 block content
 
-    include partials/navbar
+    //include partials/navbar
 
     .container
 
-        h1 Admin
+        // Nav tabs
+        ul#admin-tabs.nav.nav-tabs(role='tablist')
+            li.active(role='presentation')
+                a(href='#admin-tab-profile', aria-controls='home', role='tab', data-toggle='tab') Profil
+            li(role='presentation')
+                a(href='#admin-tab-experience', aria-controls='profile', role='tab', data-toggle='tab') Erfaring
+            li(role='presentation')
+                a(href='#admin-tab-education', aria-controls='profile', role='tab', data-toggle='tab') Uddannelse
+            li(role='presentation')
+                a(href='#admin-tab-projects', aria-controls='home', role='tab', data-toggle='tab') Projekter
+            li(role='presentation')
+                a(href='#admin-tab-skills', aria-controls='profile', role='tab', data-toggle='tab') Skills
+            li(role='presentation')
+                a(href='#admin-tab-languages', aria-controls='profile', role='tab', data-toggle='tab') Sprog
+            li(role='presentation')
+                a(href='#admin-tab-volounteer', aria-controls='profile', role='tab', data-toggle='tab') Frivillig
 
-        form
-            .form-group
-                label(for='btn-scrape') Scrape Oles LinkedIn profile
-                br
-                button#btn-scrape.btn.btn-success(type="button") Scrape!
+
+
+        // Tab panes
+        .tab-content
+
+            #admin-tab-profile.tab-pane.active(role='tabpanel')
+                h3 Profil
+                form
+                    include partials/admin/profile
+
+            #admin-tab-experience.tab-pane(role='tabpanel')
+                h3 Erfaring
+                form
+                    each item,index in experiences
+                        include partials/admin/experience
+
+            #admin-tab-education.tab-pane(role='tabpanel')
+                h3 Uddannelse
+                form
+                    each item,index in educations
+                        include partials/admin/education
+
+            #admin-tab-projects.tab-pane(role='tabpanel')
+                h3 Projekter
+                form
+                    each item,index in projects
+                        include partials/admin/project
+
+
+            #admin-tab-skills.tab-pane(role='tabpanel')
+                h3 Skills
+                form
+                    each item,index in skills
+                        include partials/admin/skill
+
+            #admin-tab-languages.tab-pane(role='tabpanel')
+                h3 Sprog
+                form
+                    each item,index in languages
+                        include partials/admin/language
+
+            #admin-tab-volounteer.tab-pane(role='tabpanel')
+                h3 Frivillig
+                form
+                    each item,index in volounteerings
+                        include partials/admin/volounteering
+
+

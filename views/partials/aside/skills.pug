@@ -7,13 +7,13 @@
             i.fa.fa-chevron-up(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
 
     ul.list-group
-        each skill, i in resume.skills
+        each skill, i in skills
             if i < 5
                 li.list-group-item.sidebar-list-item= skill.title
 
     #collapseExample.collapse
         ul.list-group.list-skills-expanded
-            each skill, i in resume.skills
+            each skill, i in skills
                 if i >= 5
                     li.list-group-item.sidebar-list-item= skill.title
 

@@ -1,0 +1,143 @@
+[
+  {
+    "title": {
+      "da": "Frontend/node.js udvikler",
+      "en": "Frontend/node.js Developer"
+    },
+    "company": {
+      "name": {
+        "da": "Danmarks Radio",
+        "en": "Danmarks Radio"
+      },
+      "logo": "https://media.licdn.com/media/p/1/005/019/088/1f56be1.png"
+    },
+    "locality": {
+      "da": "Danmark",
+      "en": "Denmark"
+    },
+    "start": "2015-09-01",
+    "end": "",
+    "description": {
+      "da": "Frontend og node.js udvikler,,,",
+      "en": "Frontend / node.js developer at one of Denmarks busiest sites. Mostly smaller express.js apps (song contest application, voting) and internal managing tools. Styling and site building in Drupal (x factor, roskilde festival etc)."
+    },
+    "currentPosition": true
+  },
+  {
+    "title": {
+      "da": "Webudvikler",
+      "en": "Digital Business Developer"
+    },
+    "company": {
+      "name": {
+        "da": "JP/Politikens Hus A/S",
+        "en": "JP/Politikens Hus A/S"
+      },
+      "logo": "https://media.licdn.com/media/p/4/005/046/10d/2a01c31.png"
+    },
+    "locality": {
+      "da": "Danmark",
+      "en": "Denmark"
+    },
+    "start": "2013-08-01",
+    "end": "2015-09-01",
+    "description": {
+      "da": "Projektbaseret Full Stack udvikler hos Danmarks største mediekoncern. JSP og JavaScript frontends og Java backends.",
+      "en": "Full Stack developer on various projects for Denmarks largest News Media Corporation. Mainly working with JavaScript frontends and Java backends."
+    },
+    "currentPosition": false
+  },
+  {
+    "title": {
+      "da": "Studenterprogrammør",
+      "en": "Student Programmer"
+    },
+    "company": {
+      "name": {
+        "da": "JP/Politikens Hus A/S",
+        "en": "JP/Politikens Hus A/S"
+      },
+      "logo": "https://media.licdn.com/media/p/4/005/046/10d/2a01c31.png"
+    },
+    "locality": {
+      "da": "Danmark",
+      "en": "Denmark"
+    },
+    "start": "2013-01-01",
+    "end": "2013-08-01",
+    "description": {
+      "da": "Udviklede en Single Page app som skabe overblik over handler og produkter for deal sitet SPOTdeal.dk",
+      "en": "Developing a web application to help with overview of financial activities for deal site SPOTdeal.dk"
+    },
+    "currentPosition": false
+  },
+  {
+    "title": {
+      "da": "Underviser",
+      "en": "Teacher"
+    },
+    "company": {
+      "name": {
+        "da": "FOF Aarhus",
+        "en": "FOF Aarhus"
+      },
+      "logo": "https://media.licdn.com/media/p/5/005/0ab/294/260c9c7.png"
+    },
+    "locality": {
+      "da": "Danmark",
+      "en": "Denmark"
+    },
+    "start": "2012-01-01",
+    "end": "2013-01-01",
+    "description": {
+      "da": "Underviste i kurserne \"Hjemmesider med HTML5 og CSS3\" og...",
+      "en": "Teaching courses \"HTML5 / CSS3: Website development\" and \"Windows 7 for Seniors\""
+    },
+    "currentPosition": false
+  },
+  {
+    "title": {
+      "da": "Musiklærer",
+      "en": "Music Teacher"
+    },
+    "company": {
+      "name": {
+        "da": "Skanderbord / Herning Musikskole, Den Jyske Pigegarde",
+        "en": "Skanderborg / Herning Musikskole, Den Jyske Pigegarde"
+      },
+      "logo": ""
+    },
+    "locality": "",
+    "start": "2003-10-01",
+    "end": "2012-02-01",
+    "description": {
+      "da": "Underviste børn i klaver og messinginstrumenter...",
+      "en": "Teaching kids to play piano and brass instruments..."
+    },
+    "currentPosition": false
+  },
+  {
+    "title": {
+      "da": "E-lærings konsulent",
+      "en": "E-learning Consultant"
+    },
+    "company": {
+      "name": {
+        "da": "Dansk Medie Design",
+        "en": "Dansk Medie Design"
+      },
+      "logo": ""
+    },
+    "locality": {
+      "da": "Danmark",
+      "en": "Denmark"
+    },
+    "start": "2008-01-01",
+    "end": "2010-05-01",
+    "description": {
+      "da": "Mange forskellige opgaver: Flash AS3 spil, underviser på workshops (eLearning forfatter værktøj som Adobe Captivate og Moodle, Q&A, Technical Writer, Screen Cast Producer, Web Master ...",
+      "en": "Doing a lot of varied tasks: Flash AS3 Games, Teacher on Workshops (eLearning Author Software like Adobe Captivate and Moodle LMS), Q&A, Technical Writer, Screen cast Producer, Webmaster of company website"
+    },
+    "currentPosition": false
+  }
+]

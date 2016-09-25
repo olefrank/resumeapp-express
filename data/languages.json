@@ -1,0 +1,23 @@
+[
+  {
+    "lang": {
+      "da": "Dansk",
+      "en": "Danish"
+    },
+    "rating": 5
+  },
+  {
+    "lang": {
+      "da": "Engelsk",
+      "en": "English"
+    },
+    "rating": 5
+  },
+  {
+    "lang": {
+      "da": "Tysk",
+      "en": "German"
+    },
+    "rating": 5
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "title": {
+      "da": "Bartender og Event-koordinator",
+      "en": "Bartender and Events"
+    },
+    "company": {
+      "name": {
+        "da": "fairbar",
+        "en": "fairbar"
+      },
+      "logo": "https://media.licdn.com/media/p/2/000/0a1/373/24b7af7.png"
+    },
+    "start": "2011-08-01",
+    "end": "2015-08-01",
+    "description": {
+      "da": "Bartender og Event koordinator på en mindre non-profil café Fairbar. Jeg var leder af teamet, som organiserer events og koncerter. Desuden bartender og vært.",
+      "en": "Bartender and Events Coordinator in a small non-profit Café. I am head of a small team that organizes events (talks, concerts, shows etc.). Occasionally doing bartender shifts."
+    },
+    "cause": {
+      "da": "Borgerrettigheder og socialt arbejde",
+      "en": "Civil Rights and Social Action"
+    }
+  }
+]

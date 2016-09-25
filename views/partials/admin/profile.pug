@@ -1,0 +1,10 @@
+.row
+    .col-xs-6
+        .form-group
+            .admin-profile-summary(contentEditable, data-prop="summary.da", data-type="resume-form-field", data-section="profile", data-id=profile._id)= profile.summary.da
+
+        button.btn.btn-success.btn-admin-save(type='button', data-section='profile')= strings.buttons.save.da
+
+    .col-xs-6
+        .form-group
+            .admin-profile-summary(contentEditable, data-prop="summary.en", data-type="resume-form-field", data-section="profile", data-id=profile._id)= profile.summary.en

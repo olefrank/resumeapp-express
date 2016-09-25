@@ -1,0 +1,14 @@
+i18n:
+https://www.drzon.net/approaches-to-json-internationalisation-i18n/
+
+mongoose:
+https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
+
+passport:
+https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+
+digital ocean deploy:
+https://code.lengstorf.com/deploy-nodejs-ssl-digitalocean/
+
+node custom error:
+https://gist.github.com/justmoon/15511f92e5216fa2624b

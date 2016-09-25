@@ -1,0 +1,103 @@
+[
+  {
+    "company": {
+      "name": {
+        "da": "Erhvervsakademi Aarhus",
+        "en": "Business Academy Aarhus"
+      },
+      "logo": ""
+    },
+    "title": {
+      "da": "Datamatiker",
+      "en": "Computer Science AP"
+    },
+    "major": "",
+    "grade": "",
+    "start": "2010-08-01",
+    "end": "2014-02-01",
+    "activities": [
+      "JAVA Programming",
+      "JavaScript Programming",
+      "Android Programming",
+      ".NET Programming",
+      "Software Design and Analysis",
+      "Database Design",
+      "Computer Networks Distributed Systems and Security",
+      "Business and Information Technology",
+      "System Development Methodology"
+    ]
+  },
+  {
+    "company": {
+      "name": {
+        "da": "Aarhus Universitet",
+        "en": "Aarhus University"
+      },
+      "logo": ""
+    },
+    "title": {
+      "da": "Cand.it Informationsvidenskab (IT i organisationer)",
+      "en": "MSc Information Science (incomplete)"
+    },
+    "major": "",
+    "grade": "",
+    "start": "2009-08-01",
+    "end": "2010-07-01",
+    "activities": [
+      "Corporate Communication",
+      "Organization Analysis",
+      "\"Information Society & Technology\"",
+      "OOA/D",
+      "Introduction To Object Oriented Proramming (Java)",
+      "Web Development"
+    ]
+  },
+  {
+    "company": {
+      "name": {
+        "da": "Det Jyske Musikkonservatorium",
+        "en": "Royal Academy Of Music"
+      },
+      "logo": ""
+    },
+    "title": {
+      "da": "Rytmisk trompetist",
+      "en": "Jazz Trumpet"
+    },
+    "major": "",
+    "grade": "",
+    "start": "2003-08-01",
+    "end": "2007-07-01",
+    "activities": [
+      "Improvisation",
+      "Composition",
+      "Big Band Conduction and Arranging",
+      "Pedagogy Theory",
+      "Psycology in Learning",
+      "Situations",
+      "Piano lessons",
+      "Ear training",
+      "Jazz Theory and Analysis",
+      "Musical history"
+    ]
+  },
+  {
+    "company": {
+      "name": {
+        "da": "Aarhus Universitet",
+        "en": "Aarhus University"
+      },
+      "logo": ""
+    },
+    "title": {
+      "da": "BA Musikvidenskab",
+      "en": "BA Musicology"
+    },
+    "major": "",
+    "grade": "",
+    "start": "1999-08-01",
+    "end": "2003-07-01",
+    "activities": [
+    ]
+  }
+]

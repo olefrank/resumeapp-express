@@ -1,0 +1,59 @@
+[
+  {
+    "title": {
+      "da": "Analytics Dashboard",
+      "en": "Analytics Dashboard"
+    },
+    "company": {
+      "name": {
+        "da": "JP/Politikens Hus A/S",
+        "en": "JP/Politikens Hus A/S"
+      },
+      "logo": ""
+    },
+    "start": "2013-01-01",
+    "end": "2013-08-01",
+    "description": {
+      "da": "Jeg udviklede et Analytics Dashboard til medievirksomheden WatchMedier. De ønskede at opsamle og bruge statistiske data, for at målrette forretningen mod brugere og kunder. Jeg byggede en Single Page app med AngularJS og Java API backend. Til at cache resultater fra Google Analytics, lavede jeg en proxy-løsning med en MySQL database. UI er lavet responsivt med Twitter Bootstrap",
+      "en": "I developed an Analytics Dashboard for the danish news site WatchMedier. They want to know their viewers by learning from statistical data. They had a Google Analytics account but did not know how to use it.\n\nI built a AngularJS client and a Java API backend. The app uses a MySQL database as a cache layer to minimize polling from Google Analytics. UI design made responsive with Twitter Bootstrap."
+    }
+  },
+  {
+    "title": {
+      "da": "Escenic Content API",
+      "en": "Escenic Content API"
+    },
+    "company": {
+      "name": {
+        "da": "JP/Politikens Hus A/S",
+        "en": "JP/Politikens Hus A/S"
+      },
+      "logo": ""
+    },
+    "start": "2014-01-01",
+    "end": "2015-01-01",
+    "description": {
+      "da": "Et JSON REST API bygget med Java og Spring Framework. Udstiller artikler og indhold fra publiceringsplatformen Escenic. API'et konsumeres af websider, mobile apps og dele er tilgængeligt udefra. Teamet og jeg fokuserede på at lave et skalérbart og beskrivende API design.",
+      "en": "A JSON API built with Java and Spring Framework. All content was trapped in a closed CMS system without an interface. The team created an API to query the content from the web. The content is rather complex so much attention was given to flexible but readable API design."
+    }
+  },
+  {
+    "title": {
+      "da": "Finans Update (Magasin Web app)",
+      "en": "Magazine Web app"
+    },
+    "company": {
+      "name": {
+        "da": "JP/Politikens Hus A/S",
+        "en": "JP/Politikens Hus A/S"
+      },
+      "logo": ""
+    },
+    "start": "2015-01-01",
+    "end": "2015-07-01",
+    "description": {
+      "da": "En responsiv Web app som efterligner det klassiske \"Nyhedsmagasin\" format. Lavet med AngularJS og Twitter Bootstrap.",
+      "en": "A web app (AngularJS) made like a classic news magazine with todays top stories."
+    }
+  }
+]

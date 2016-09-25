@@ -1,106 +1,76 @@
 // MAIN
-main.col-sm-8.col-md-9.col-sm-height.content
+main.col-sm-height.content
+
     .wrapper-inner
 
         // summary
         section#profile.well.content__profile
             h3= strings.headings.profile
-            blockquote !{resume.summary}
+            blockquote !{profile.summary}
                 p.read-more
+
+
 
         // current position
         section#current-position.well
             h3= strings.headings.current
             .row.row-with-padding
 
-                each exp in resume.experience
-                    .col-md-12
-                        if exp.currentPosition
-                            a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='danger')
-                                .panel.panel-danger.panel-hover
-                                    .panel-heading
-                                        h3.panel-title= exp.title
-                                    .panel-body
-                                        if exp.company
-                                            p
-                                                strong= exp.company
-                                            if exp.start
-                                                p.text-dimmed
-                                                    em= moment(exp.start).format('MMMM YYYY')
-                                                    |  -
-                                                    if (exp.end)
-                                                        em= moment(exp.end).format('MMMM YYYY')
+                 if experiences.length > 1
+                    each exp,index in experiences
+                        .col-md-6
+                            include panels/panel-current-experience
+                 else
+                    each exp,index in experiences
+                        .col-md-12
+                            include panels/panel-current-experience
 
 
-        // previous experience
+
+        // experience
         section#experience.well
             h3= strings.headings.experience
             .row.row-with-padding
-
-                each exp in resume.experience
+                each exp,index in experiences
                     .col-md-6
-                        if !exp.currentPosition
-                            a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='primary')
-                                .panel.panel-primary.panel-hover
-                                    .panel-heading
-                                        h3.panel-title= exp.title
-                                    .panel-body
-                                        if exp.company
-                                            p
-                                                strong= exp.company
-                                            if exp.start
-                                                p.text-dimmed
-                                                    em= moment(exp.start).format('MMMM YYYY')
-                                                    |  -
-                                                    if (exp.end)
-                                                        em= moment(exp.end).format('MMMM YYYY')
+                        include panels/panel-experience
+
+
 
         // education
         section#education.well
             h3= strings.headings.education
             .row.row-with-padding
 
-                each edu in resume.education
-                    .col-md-6
-                        a.hide-link(data-toggle='modal', data-target='#resume-modal', data-modal-data=edu, data-panel-type='success')
-                            .panel.panel-success.panel-hover
-                                .panel-heading
-                                    h3.panel-title= edu.degree
-                                .panel-body
-                                    if edu.school
-                                        p
-                                            strong= edu.school
-                                        if edu.start
-                                            p.text-dimmed
-                                                em= moment(edu.start).format('MMMM YYYY')
-                                                |  -
-                                                if (edu.end)
-                                                    em= moment(edu.end).format('MMMM YYYY')
+                if educations.length > 1
+                    each edu,index in educations
+                        .col-md-6
+                            include panels/panel-education
+
+
 
         // projects
         section#projects.well
             h3= strings.headings.projects
             .row.row-with-padding
 
-                if resume.projects.length > 1
-                    each project in resume.projects
+                if projects.length > 1
+                    each project,index in projects
                         .col-md-6
                             include panels/panel-project
-                else
-                    each project in resume.projects
-                        .col-md-12
-                            include panels/panel-project
+
+
 
         // volounteer work
         section#volounteering.well
             h3= strings.headings.volounteering
             .row.row-with-padding
-                if resume.volounteering.length > 1
+                if volounteerings.length > 1
 
-                    each vol in resume.volounteering
+                    each vol,index in volounteerings
                         .col-md-6
                             include panels/panel-volounteering
                 else
-                    each vol in resume.volounteering
+                    each vol,index in volounteerings
                         .col-md-12
                             include panels/panel-volounteering

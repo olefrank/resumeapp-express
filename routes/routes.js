@@ -6,14 +6,11 @@
 //var express = require('express');
 //var router = express.Router();
 
-
-var resume = require('../data/old/resume');
 const strings = require('../data/strings');
 const appconfig = require('../config/app.config');
 const traverse = require('traverse');
 const async = require('async');
 const CustomError = require('./custom-error');
-const $ = require('jquery');
 
 // models
 let education = require('../models/education');
@@ -62,8 +59,10 @@ module.exports = function(app, passport) {
 
             // convert to json
             var json = JSON.parse(JSON.stringify(results));
+
             // filter current language
             var filtered = filterLanguage(lang, json);
+
             // render in template
             res.render('index', {
                 educations       : filtered.education,
@@ -130,14 +129,14 @@ module.exports = function(app, passport) {
 
 
 
-    app.post('/admin', isLoggedIn, function(req, res) {
-        var msg;
+    app.put('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+         var msg;
         var data = req.body;
-        var section = data.section || "";
+        var section = data.section;
         var _id = data._id;
 
         if (!section || !_id) {
-            msg = "Oops! Section and/or _id is undefined";
+            msg = strings.messages.id_undefined.da;
             return next(new CustomError(msg, 500));
         }
 
@@ -147,7 +146,7 @@ module.exports = function(app, passport) {
         // find
         model.findById(_id, function(err, result) {
             if (err) {
-                msg = "Oops! Item (id:' + _id + ') not found ...";
+                msg = strings.messages.id_not_found.da;
                 return next(new CustomError(msg, 500));
             }
 
@@ -161,14 +160,47 @@ module.exports = function(app, passport) {
             // save
             result.save(function(err) {
                 if (err) {
-                    msg = "Oops! Something went wrong...";
+                    msg = strings.messages.something_went_wrong.da;
                     console.log(err); // ofj: use proper logger
                     return next(new CustomError(msg, 500));
                 }
-                msg = "Document sucessfully updated";
+                msg = strings.messages.save_successful.da;
                 console.log(msg); // ofj: use proper logger
                 return next(new CustomError(msg, 200));
             });
+        });
+    });
+
+
+
+    app.delete('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+        var msg;
+        var data = req.body;
+        var section = data.section;
+        var _id = data._id;
+
+        console.log(data);
+
+        if (!section || !_id) {
+            msg = strings.messages.id_undefined.da;
+            return next(new CustomError(msg, 500));
+        }
+
+        // get model
+        var model = getModelForSection(section);
+
+        // find
+        // find the user with id 4
+        model.findByIdAndRemove(_id, function(err) {
+            if (err) {
+                msg = strings.messages.id_not_found.da;
+                return next(new CustomError(msg, 500));
+            }
+
+            // message to client
+            msg = strings.messages.delete_successful.da;
+            console.log(msg); // ofj: use proper logger
+            return next(new CustomError(msg, 200));
         });
     });
 
@@ -246,12 +278,24 @@ module.exports = function(app, passport) {
 };
 
 
-// route middleware to make sure a user is logged in
+// route middleware: make sure user is logged in
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
     res.redirect('/login');
 }
+
+// route middleware: make sure user is permitted to perform action
+function isAuthorized(req, res, next) {
+    // test user not permitted
+    if (req.user && req.user.local.email === 'test@test.com') {
+        var msg = strings.messages.not_allowed.da;
+        return next(new CustomError(msg, 403));
+    }
+    else return next();
+}
+
+
 
 
 function getModelForSection(section) {
@@ -289,7 +333,7 @@ function getModelForSection(section) {
 var filterLanguage = function(language, obj) {
     return traverse(obj).map(function (item) {
         if (this.key === language) {
-            this.parent.update(item + "");
+            this.parent.update(item);
         }
     });
 };

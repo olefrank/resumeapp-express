@@ -12,6 +12,38 @@
     "save": {
       "da": "Gem",
       "en": "Save"
+    },
+    "delete": {
+      "da": "Slet",
+      "en": "Delete"
+    }
+
+  },
+
+  "messages": {
+    "not_allowed": {
+      "da" : "Beklager! Du har ikke lov til at udføre handlingen",
+      "en" : "Sorry! Action not permitted for current user"
+    },
+    "id_undefined": {
+      "da": "Fejl! Sektion og/eller id for elementet mangler",
+      "en": "Oops! Section and/or _id is undefined"
+    },
+    "id_not_found": {
+      "da": "Fejl! Elementet findes ikke i databasen",
+      "en": "Oops! Element could not be found in database"
+    },
+    "something_went_wrong": {
+      "da": "Fejl! Noget gik galt...",
+      "en": "Oops! Something went wrong"
+    },
+    "save_successful": {
+      "da": "Ændringen er gemt",
+      "en": "Element successfully saved"
+    },
+    "delete_successful": {
+      "da": "Elementet er slettet",
+      "en": "Element successfully deleted"
     }
 
   },

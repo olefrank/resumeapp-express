@@ -128,37 +128,39 @@ $(function() {
 });
 
 
-// admin: post data
+// admin PUT data
 $(function() {
-    $('.btn-admin-save').on('click', btnSaveHandler);
-
-    function btnSaveHandler(e) {
+    $('.btn-admin-save').on('click', function(e) {
         e.preventDefault();
 
-        // get section of data to save
-        var section = $(this).data('section');
-        var id = $(this).data('id');
+        // parent form
+        var form = $(this).closest('form');
+
+        // get section/id
+        var section = form.data('section');
+        var id = form.data('id');
 
         // get data from relevant fields
         var data = getData(section, id);
 
         // post data to endpoint
-        $.ajax({
-            method: "POST",
-            url: "/admin",
-            data: data,
-            contentType: 'application/json'
-        }).done(function(data, textStatus, jqXHR) {
-            toastr.success(data);
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            toastr.error(jqXHR.responseText);
-        });
-    }
-
+        if (confirm('Are you sure you want to delete this?')) {
+            $.ajax({
+                method: "PUT",
+                url: "/admin",
+                data: data,
+                contentType: 'application/json'
+            }).done(function(data, textStatus, jqXHR) {
+                toastr.success(data);
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                toastr.error(jqXHR.responseText);
+            });
+        }
+    });
 
     function getData(section, id) {
         var data = {_id: id, section: section};
-        var query = "[data-id='" + id + "'][data-section='" + section + "'][data-type='resume-form-field']";
+        var query = "form[data-id='" + id + "'][data-section='" + section + "'] [data-type='resume-form-field']";
         var item;
 
         $( query ).each(function() {
@@ -194,6 +196,42 @@ $(function() {
         schema[arr[len-1]] = value;
         return schema;
     }
+});
+
+
+// admin DELETE data
+$(function() {
+
+    $('.btn-admin-delete').on('click', function(e) {
+        e.preventDefault();
+        var btn = $(this);
+        // parent form
+        var form = btn.closest('form');
+
+        // get section/id
+        var data = {};
+        data.section = form.data('section');
+        data._id = form.data('id');
+
+        // http DELETE
+        if (confirm('Are you sure you want to delete this?')) {
+            $.ajax({
+                method: "DELETE",
+                url: "/admin",
+                data: JSON.stringify(data),
+                contentType: 'application/json'
+            }).done(function(data, textStatus, jqXHR) {
+                toastr.success(data);
+                // remove
+                btn.closest('.admin-element').hide('normal', function() {
+                    $(this).remove();
+                });
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                toastr.error(jqXHR.responseText);
+            });
+        }
+    });
+
 });
 
 

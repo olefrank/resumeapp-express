@@ -1,18 +1,31 @@
-.well
-    .row
-        .col-xs-6
-            .form-group
-                label Sprog
-                input.admin-language-title.form-control(data-prop="lang.da", data-type="resume-form-field", data-section="language", data-id=item._id, value=item.lang.da)
-        .col-xs-6
-            .form-group
-                label Title
-                input.admin-language-title.form-control(data-prop="lang.en", data-type="resume-form-field", data-section="language", data-id=item._id, value=item.lang.en)
-    .row
-        .col-xs-6
-            .form-group
-                label Rating
-                input.admin-language-company.form-control(type="number", min=1, max=5, data-prop="rating", data-type="resume-form-field", data-section="language", data-id=item._id, value=item.rating)
+.admin-element
+    .panel.panel-success
+        .panel-heading
+            h3.panel-title= item.lang.da
+        .panel-body
+            form(data-section='language', data-id=item._id)
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Sprog
+                            input.admin-language-title.form-control(data-prop="lang.da", data-type="resume-form-field", value=item.lang.da)
+                    .col-xs-6
+                        .form-group
+                            label Title
+                            input.admin-language-title.form-control(data-prop="lang.en", data-type="resume-form-field", value=item.lang.en)
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Rating
+                            input.admin-language-company.form-control(type="number", min=1, max=5, data-prop="rating", data-type="resume-form-field", value=item.rating)
 
-        .col-xs-6
-            button.btn.btn-success.btn-admin-save(type='button', data-id=item._id, data-section='language')= strings.buttons.save.da
+                    .col-xs-6
+                        .form-group
+                            label &nbsp;
+                            .row
+                                .col-xs-6
+                                    button.btn.btn-success.btn-admin-save.form-control(type='button')= strings.buttons.save.da
+                                .col-xs-6
+                                    button.btn.btn-warning.btn-admin-delete.form-control(type='button')
+                                        span.glyphicon.glyphicon-remove
+                                        | #{strings.buttons.delete.da}

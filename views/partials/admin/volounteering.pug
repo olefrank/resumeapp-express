@@ -1,48 +1,58 @@
-.well
-    .row
-        .col-xs-6
-            .form-group
-                label Titel
-                input.admin-volounteering-title.form-control(data-prop="title.da", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=item.title.da)
-        .col-xs-6
-            .form-group
-                label Title
-                input.admin-volounteering-title.form-control(data-prop="title.en", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=item.title.en)
-    .row
-        .col-xs-6
-            .form-group
-                label Virksomhed
-                input.admin-volounteering-company.form-control(data-prop="company.name.da", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=item.company.name.da)
+.admin-element
+    .panel.panel-info
+        .panel-heading
+            h3.panel-title= item.title.da
+        .panel-body
+            form(data-id=item._id, data-section='volounteering')
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Titel
+                            input.admin-volounteering-title.form-control(data-prop="title.da", data-type="resume-form-field", value=item.title.da)
+                    .col-xs-6
+                        .form-group
+                            label Title
+                            input.admin-volounteering-title.form-control(data-prop="title.en", data-type="resume-form-field", value=item.title.en)
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Virksomhed
+                            input.admin-volounteering-company.form-control(data-prop="company.name.da", data-type="resume-form-field", value=item.company.name.da)
 
-        .col-xs-6
-            .form-group
-                label Company
-                input.admin-volounteering-company.form-control(data-prop="company.name.en", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=item.company.name.da)
+                    .col-xs-6
+                        .form-group
+                            label Company
+                            input.admin-volounteering-company.form-control(data-prop="company.name.en", data-type="resume-form-field", value=item.company.name.da)
 
-    .row
-        .col-xs-6
-            .form-group
-                label Beskrivelse
-                .admin-volounteering-description(contentEditable, data-prop="description.da", data-type="resume-form-field", data-section="volounteering", data-id=item._id)= item.description.da
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Beskrivelse
+                            .admin-volounteering-description(contentEditable, data-prop="description.da", data-type="resume-form-field")= item.description.da
 
-        .col-xs-6
-            .form-group
-                label Description
-                .admin-volounteering-description(contentEditable, data-prop="description.en", data-type="resume-form-field", data-section="volounteering", data-id=item._id)= item.description.en
+                    .col-xs-6
+                        .form-group
+                            label Description
+                            .admin-volounteering-description(contentEditable, data-prop="description.en", data-type="resume-form-field")= item.description.en
 
-    .well
-        .row
-            .col-xs-4
-                .form-group
-                    label Start
-                    input.admin-volounteering-date.form-control(type="date", data-prop="start", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=moment(item.start).format('YYYY-MM-DD'))
-            .col-xs-4
-                .form-group
-                    label End
-                    input.admin-volounteering-date.form-control(type="date", data-prop="end", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=moment(item.en).format('YYYY-MM-DD'))
-            .col-xs-4
-                .form-group
-                    label Logo
-                    input.admin-volounteering-logo.form-control(data-prop="company.logo", data-type="resume-form-field", data-section="volounteering", data-id=item._id, value=item.company.logo)
+                .well
+                    .row
+                        .col-xs-4
+                            .form-group
+                                label Start
+                                input.admin-volounteering-date.form-control(type="date", data-prop="start", data-type="resume-form-field", value=moment(item.start).format('YYYY-MM-DD'))
+                        .col-xs-4
+                            .form-group
+                                label End
+                                input.admin-volounteering-date.form-control(type="date", data-prop="end", data-type="resume-form-field", value=moment(item.en).format('YYYY-MM-DD'))
+                        .col-xs-4
+                            .form-group
+                                label Logo
+                                input.admin-volounteering-logo.form-control(data-prop="company.logo", data-type="resume-form-field", value=item.company.logo)
 
-        button.btn.btn-success.btn-admin-save(type='button', data-id=item._id, data-section='volounteering')= strings.buttons.save.da
+
+                .btn-toolbar
+                    button.btn.btn-success.btn-admin-save(type='button')= strings.buttons.save.da
+                    button.btn.btn-warning.btn-admin-delete(type='button')
+                        span.glyphicon.glyphicon-remove
+                        | #{strings.buttons.delete.da}

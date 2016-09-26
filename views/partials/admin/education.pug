@@ -1,37 +1,46 @@
-.well
-    .row
-        .col-xs-6
-            .form-group
-                label Titel
-                input.admin-experience-title.form-control(data-prop="title.da", data-type="resume-form-field", data-section="education", data-id=item._id, value=item.title.da)
-        .col-xs-6
-            .form-group
-                label Title
-                input.admin-education-title.form-control(data-prop="title.en", data-type="resume-form-field", data-section="education" data-id=item._id, value=item.title.en)
-    .row
-        .col-xs-6
-            .form-group
-                label Virksomhed
-                input.admin-education-company.form-control(data-prop="company.name.da", data-type="resume-form-field", data-section="education", data-id=item._id, value=item.company.name.da)
+.admin-element
+    .panel.panel-success
+        .panel-heading
+            h3.panel-title= item.title.da
+        .panel-body
+            form(data-id=item._id, data-section='education')
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Titel
+                            input.admin-experience-title.form-control(data-prop="title.da", data-type="resume-form-field", value=item.title.da)
+                    .col-xs-6
+                        .form-group
+                            label Title
+                            input.admin-education-title.form-control(data-prop="title.en", data-type="resume-form-field", value=item.title.en)
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Virksomhed
+                            input.admin-education-company.form-control(data-prop="company.name.da", data-type="resume-form-field", value=item.company.name.da)
 
-        .col-xs-6
-            .form-group
-                label Company
-                input.admin-education-company.form-control(data-prop="company.name.en", data-type="resume-form-field", data-section="education", data-id=item._id, value=item.company.name.da)
+                    .col-xs-6
+                        .form-group
+                            label Company
+                            input.admin-education-company.form-control(data-prop="company.name.en", data-type="resume-form-field", value=item.company.name.da)
 
-    .well
-        .row
-            .col-xs-4
-                .form-group
-                    label Start
-                    input.admin-education-date.form-control(type="date", data-prop="start", data-type="resume-form-field", data-section="education", data-id=item._id, value=moment(item.start).format('YYYY-MM-DD'))
-            .col-xs-4
-                .form-group
-                    label End
-                    input.admin-education-date.form-control(type="date", data-prop="end", data-type="resume-form-field", data-section="education", data-id=item._id, value=moment(item.end   ).format('YYYY-MM-DD'))
-            .col-xs-4
-                .form-group
-                    label Logo
-                    input.admin-education-logo.form-control(data-prop="company.logo", data-type="resume-form-field", data-section="education", data-id=item._id, value=item.company.logo)
+                .well
+                    .row
+                        .col-xs-4
+                            .form-group
+                                label Start
+                                input.admin-education-date.form-control(type="date", data-prop="start", data-type="resume-form-field", value=moment(item.start).format('YYYY-MM-DD'))
+                        .col-xs-4
+                            .form-group
+                                label End
+                                input.admin-education-date.form-control(type="date", data-prop="end", data-type="resume-form-field", value=moment(item.end   ).format('YYYY-MM-DD'))
+                        .col-xs-4
+                            .form-group
+                                label Logo
+                                input.admin-education-logo.form-control(data-prop="company.logo", data-type="resume-form-field", value=item.company.logo)
 
-    button.btn.btn-success.btn-admin-save(type='button', data-id=item._id, data-section='education')= strings.buttons.save.da
+                .btn-toolbar
+                    button.btn.btn-success.btn-admin-save(type='button')= strings.buttons.save.da
+                    button.btn.btn-warning.btn-admin-delete(type='button')
+                        span.glyphicon.glyphicon-remove
+                        | #{strings.buttons.delete.da}

@@ -2,7 +2,7 @@ extends layouts/layout
 
 block content
 
-    //include partials/navbar
+    include partials/navbar
 
     .container
 
@@ -30,44 +30,34 @@ block content
 
             #admin-tab-profile.tab-pane.active(role='tabpanel')
                 h3 Profil
-                form
-                    include partials/admin/profile
+                include partials/admin/profile
 
             #admin-tab-experience.tab-pane(role='tabpanel')
                 h3 Erfaring
-                form
-                    each item,index in experiences
-                        include partials/admin/experience
+                each item,index in experiences
+                    include partials/admin/experience
 
             #admin-tab-education.tab-pane(role='tabpanel')
                 h3 Uddannelse
-                form
-                    each item,index in educations
-                        include partials/admin/education
+                each item,index in educations
+                    include partials/admin/education
 
             #admin-tab-projects.tab-pane(role='tabpanel')
                 h3 Projekter
-                form
-                    each item,index in projects
-                        include partials/admin/project
-
+                each item,index in projects
+                    include partials/admin/project
 
             #admin-tab-skills.tab-pane(role='tabpanel')
                 h3 Skills
-                form
-                    each item,index in skills
-                        include partials/admin/skill
+                each item,index in skills
+                    include partials/admin/skill
 
             #admin-tab-languages.tab-pane(role='tabpanel')
                 h3 Sprog
-                form
-                    each item,index in languages
-                        include partials/admin/language
+                each item,index in languages
+                    include partials/admin/language
 
             #admin-tab-volounteer.tab-pane(role='tabpanel')
                 h3 Frivillig
-                form
-                    each item,index in volounteerings
-                        include partials/admin/volounteering
-
-
+                each item,index in volounteerings
+                    include partials/admin/volounteering

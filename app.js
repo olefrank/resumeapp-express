@@ -12,11 +12,15 @@ var toastr    = require('express-toastr');
 var morgan       = require('morgan');
 var session      = require('express-session');
 var configDB = require('./config/database.js');
-mongoose.connect(configDB.url); // connect to our database
-require('./config/passport')(passport); // pass passport for configuration
-
 var app = express();
 
+// connect to our database
+mongoose.connect(configDB.url);
+
+// pass passport for configuration
+require('./config/passport')(passport);
+
+// to use moment in templates
 app.locals.moment = moment;
 
 // view engine setup
@@ -26,7 +30,6 @@ app.set('view engine', 'pug');
 // static routes
 app.use('/lib/bootstrap', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/')));
 app.use('/lib/jquery', express.static(path.join(__dirname,'/node_modules/jquery/dist')));
-app.use('/lib/font-awesome', express.static(path.join(__dirname,'/node_modules/font-awesome/')));
 app.use('/lib/moment', express.static(path.join(__dirname,'/node_modules/moment/')));
 app.use('/lib/toastr', express.static(path.join(__dirname,'/node_modules/toastr/build/')));
 
@@ -43,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: appconfig.session.secret })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(flash());
 
 
 require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport

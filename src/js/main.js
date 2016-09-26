@@ -130,39 +130,48 @@ $(function() {
 
 // admin PUT data
 $(function() {
-    $('.btn-admin-save').on('click', function(e) {
+    $(document).on('click', '.btn-admin-save', function(e) {
         e.preventDefault();
+
+        var data = {};
 
         // parent form
         var form = $(this).closest('form');
 
         // get section/id
         var section = form.data('section');
-        var id = form.data('id');
+        var id = form.attr('id');
 
         // get data from relevant fields
-        var data = getData(section, id);
+        data = getData(section, id);
 
-        // post data to endpoint
-        if (confirm('Are you sure you want to delete this?')) {
-            $.ajax({
-                method: "PUT",
-                url: "/admin",
-                data: data,
-                contentType: 'application/json'
-            }).done(function(data, textStatus, jqXHR) {
-                toastr.success(data);
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-                toastr.error(jqXHR.responseText);
-            });
+        // if data is empty
+        if ( Object.keys(data).length === 0 && data.constructor === Object ) {
+            toastr.error('Fejl! Ingen elementer fundet at opdatere');
+        }
+        else {
+            // post data to endpoint
+            if (confirm('Vil du ændre elementet?')) {
+                $.ajax({
+                    method: "PUT",
+                    url: "/admin",
+                    data: data,
+                    contentType: 'application/json'
+                }).done(function(data, textStatus, jqXHR) {
+                    toastr.success(data);
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    toastr.error(jqXHR.responseText);
+                });
+            }
         }
     });
 
     function getData(section, id) {
         var data = {_id: id, section: section};
-        var query = "form[data-id='" + id + "'][data-section='" + section + "'] [data-type='resume-form-field']";
+        var query = "#" + id + "[data-section='" + section + "'] .resume-form-field";
         var item;
 
+        // collect data from each field
         $( query ).each(function() {
             item = $(this)[0];
             var path = item.dataset.prop;
@@ -202,8 +211,9 @@ $(function() {
 // admin DELETE data
 $(function() {
 
-    $('.btn-admin-delete').on('click', function(e) {
+    $(document).on('click', '.btn-admin-delete', function(e) {
         e.preventDefault();
+
         var btn = $(this);
         // parent form
         var form = btn.closest('form');
@@ -213,27 +223,58 @@ $(function() {
         data.section = form.data('section');
         data._id = form.data('id');
 
+        // new element - not in database yet
+        if (!data._id) {
+            removeElement(btn, $(this));
+        }
         // http DELETE
-        if (confirm('Are you sure you want to delete this?')) {
-            $.ajax({
-                method: "DELETE",
-                url: "/admin",
-                data: JSON.stringify(data),
-                contentType: 'application/json'
-            }).done(function(data, textStatus, jqXHR) {
-                toastr.success(data);
-                // remove
-                btn.closest('.admin-element').hide('normal', function() {
-                    $(this).remove();
+        else {
+            if (confirm('Vil du slette elementet?')) {
+                $.ajax({
+                    method: "DELETE",
+                    url: "/admin",
+                    data: JSON.stringify(data),
+                    contentType: 'application/json'
+                }).done(function(data, textStatus, jqXHR) {
+                    removeElement(btn, $(this));
+                    toastr.success(data);
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    toastr.error(jqXHR.responseText);
                 });
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-                toastr.error(jqXHR.responseText);
-            });
+            }
         }
     });
 
+    // remove dom element
+    function removeElement(context, elem) {
+        context.closest('.admin-element').hide('normal', function() {
+            elem.remove();
+        });
+    }
 });
 
+
+// admin POST data
+$(function() {
+
+    $('.btn-admin-addnew').on('click', function (e) {
+        e.preventDefault();
+
+        var btn = $(this).closest('.add-new-element');
+
+        // parent form
+        var form = btn.next().find('form');
+
+        // get section
+        var section = form.data('section');
+
+        // get template
+        $.get('/templates/' + section).then(function(html) {
+            // insert
+            $(html).hide().prependTo(".element-list-" + section).fadeIn("normal");
+        });
+    });
+});
 
 // admin tabs
 $(function() {

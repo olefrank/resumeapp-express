@@ -1,58 +1,58 @@
 .admin-element
-    .panel.panel-info
+    div(class='panel panel-' + color)
         .panel-heading
-            h3.panel-title= item.title.da
+            h3.panel-title= item ? item.title.da : 'Nyt element'
         .panel-body
-            form(data-id=item._id, data-section='volounteering')
+            form(id= item ? item._id : '', data-section='volounteering')
                 .row
                     .col-xs-6
                         .form-group
                             label Titel
-                            input.admin-volounteering-title.form-control(data-prop="title.da", data-type="resume-form-field", value=item.title.da)
+                            input.resume-form-field.form-control(data-prop="title.da", value= item ? item.title.da : '')
                     .col-xs-6
                         .form-group
                             label Title
-                            input.admin-volounteering-title.form-control(data-prop="title.en", data-type="resume-form-field", value=item.title.en)
+                            input.resume-form-field.form-control(data-prop="title.en", value= item ? item.title.en : '')
                 .row
                     .col-xs-6
                         .form-group
                             label Virksomhed
-                            input.admin-volounteering-company.form-control(data-prop="company.name.da", data-type="resume-form-field", value=item.company.name.da)
+                            input.resume-form-field.form-control(data-prop="company.name.da", value= item ? item.company.name.da : '')
 
                     .col-xs-6
                         .form-group
                             label Company
-                            input.admin-volounteering-company.form-control(data-prop="company.name.en", data-type="resume-form-field", value=item.company.name.da)
+                            input.resume-form-field.form-control(data-prop="company.name.en", value= item ? item.company.name.da : '')
 
                 .row
                     .col-xs-6
                         .form-group
                             label Beskrivelse
-                            .admin-volounteering-description(contentEditable, data-prop="description.da", data-type="resume-form-field")= item.description.da
+                            .resume-form-field(contentEditable, data-prop="description.da")= item ? item.description.da : 'Beskrivelse her...'
 
                     .col-xs-6
                         .form-group
                             label Description
-                            .admin-volounteering-description(contentEditable, data-prop="description.en", data-type="resume-form-field")= item.description.en
+                            .resume-form-field(contentEditable, data-prop="description.en")= item ? item.description.en : 'Please describe'
 
                 .well
                     .row
                         .col-xs-4
                             .form-group
                                 label Start
-                                input.admin-volounteering-date.form-control(type="date", data-prop="start", data-type="resume-form-field", value=moment(item.start).format('YYYY-MM-DD'))
+                                input.resume-form-field.form-control(type="date", data-prop="start", value=moment( item ? item.start : moment() ).format('YYYY-MM-DD'))
                         .col-xs-4
                             .form-group
                                 label End
-                                input.admin-volounteering-date.form-control(type="date", data-prop="end", data-type="resume-form-field", value=moment(item.en).format('YYYY-MM-DD'))
+                                input.resume-form-field.form-control(type="date", data-prop="end", value=moment( item ? item.end : moment() ).format('YYYY-MM-DD'))
                         .col-xs-4
                             .form-group
                                 label Logo
-                                input.admin-volounteering-logo.form-control(data-prop="company.logo", data-type="resume-form-field", value=item.company.logo)
+                                input.resume-form-field.form-control(data-prop="company.logo", value= item ? item.company.logo : '')
 
 
                 .btn-toolbar
-                    button.btn.btn-success.btn-admin-save(type='button')= strings.buttons.save.da
-                    button.btn.btn-warning.btn-admin-delete(type='button')
+                    button.btn.btn-success.btn-admin-save(type='button') Gem
+                    button.btn.btn-danger.btn-admin-delete(type='button')
                         span.glyphicon.glyphicon-remove
-                        | #{strings.buttons.delete.da}
+                        | Slet

@@ -1,46 +1,46 @@
 .admin-element
-    .panel.panel-success
+    div(class='panel panel-' + color)
         .panel-heading
-            h3.panel-title= item.title.da
+            h3.panel-title= item ? item.title.da : 'Nyt element'
         .panel-body
-            form(data-id=item._id, data-section='education')
+            form(id= item ? item._id : '', data-section='education')
                 .row
                     .col-xs-6
                         .form-group
                             label Titel
-                            input.admin-experience-title.form-control(data-prop="title.da", data-type="resume-form-field", value=item.title.da)
+                            input.resume-form-field.form-control(data-prop="title.da", value= item ? item.title.da : '')
                     .col-xs-6
                         .form-group
                             label Title
-                            input.admin-education-title.form-control(data-prop="title.en", data-type="resume-form-field", value=item.title.en)
+                            input.resume-form-field.form-control(data-prop="title.en", value= item ? item.title.en : '')
                 .row
                     .col-xs-6
                         .form-group
                             label Virksomhed
-                            input.admin-education-company.form-control(data-prop="company.name.da", data-type="resume-form-field", value=item.company.name.da)
+                            input.resume-form-field.form-control(data-prop="company.name.da", value= item ? item.company.name.da : '')
 
                     .col-xs-6
                         .form-group
                             label Company
-                            input.admin-education-company.form-control(data-prop="company.name.en", data-type="resume-form-field", value=item.company.name.da)
+                            input.resume-form-field.form-control(data-prop="company.name.en", value= item ? item.company.name.da : '')
 
                 .well
                     .row
                         .col-xs-4
                             .form-group
                                 label Start
-                                input.admin-education-date.form-control(type="date", data-prop="start", data-type="resume-form-field", value=moment(item.start).format('YYYY-MM-DD'))
+                                input.resume-form-field.form-control(type="date", data-prop="start", value=moment( item ? item.start : '' ).format('YYYY-MM-DD'))
                         .col-xs-4
                             .form-group
                                 label End
-                                input.admin-education-date.form-control(type="date", data-prop="end", data-type="resume-form-field", value=moment(item.end   ).format('YYYY-MM-DD'))
+                                input.resume-form-field.form-control(type="date", data-prop="end", value=moment( item ? item.end : '' ).format('YYYY-MM-DD'))
                         .col-xs-4
                             .form-group
                                 label Logo
-                                input.admin-education-logo.form-control(data-prop="company.logo", data-type="resume-form-field", value=item.company.logo)
+                                input.resume-form-field.form-control(data-prop="company.logo", value= item ? item.company.logo : '')
 
                 .btn-toolbar
-                    button.btn.btn-success.btn-admin-save(type='button')= strings.buttons.save.da
+                    button.btn.btn-success.btn-admin-save(type='button') Gem
                     button.btn.btn-warning.btn-admin-delete(type='button')
                         span.glyphicon.glyphicon-remove
-                        | #{strings.buttons.delete.da}
+                        | Slet

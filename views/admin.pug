@@ -34,30 +34,48 @@ block content
 
             #admin-tab-experience.tab-pane(role='tabpanel')
                 h3 Erfaring
-                each item,index in experiences
-                    include partials/admin/experience
+                - var color = 'primary'
+                include partials/admin/add-new-element
+                .element-list-experience
+                    each item,index in experiences
+                        include partials/admin/experience
 
             #admin-tab-education.tab-pane(role='tabpanel')
                 h3 Uddannelse
-                each item,index in educations
-                    include partials/admin/education
+                - var color = 'success'
+                include partials/admin/add-new-element
+                .element-list-education
+                    each item,index in educations
+                        include partials/admin/education
 
             #admin-tab-projects.tab-pane(role='tabpanel')
                 h3 Projekter
-                each item,index in projects
-                    include partials/admin/project
+                - var color = 'warning'
+                include partials/admin/add-new-element
+                .element-list-project
+                    each item,index in projects
+                        include partials/admin/project
 
             #admin-tab-skills.tab-pane(role='tabpanel')
                 h3 Skills
-                each item,index in skills
-                    include partials/admin/skill
+                - var color = 'default'
+                include partials/admin/add-new-element
+                .element-list-skill
+                    each item,index in skills
+                        include partials/admin/skill
 
             #admin-tab-languages.tab-pane(role='tabpanel')
                 h3 Sprog
-                each item,index in languages
-                    include partials/admin/language
+                - var color = 'success'
+                include partials/admin/add-new-element
+                .element-list-language
+                    each item,index in languages
+                        include partials/admin/language
 
             #admin-tab-volounteer.tab-pane(role='tabpanel')
                 h3 Frivillig
-                each item,index in volounteerings
-                    include partials/admin/volounteering
+                - var color = 'info'
+                include partials/admin/add-new-element
+                .element-list-volounteering
+                    each item,index in volounteerings
+                        include partials/admin/volounteering

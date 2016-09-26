@@ -1,31 +1,31 @@
 .admin-element
-    .panel.panel-default
+    div(class='panel panel-' + color)
         .panel-heading
-            h3.panel-title= item.title.da
+            h3.panel-title= item ? item.title.da : 'Nyt element'
         .panel-body
-            form(data-section='skill', data-id=item._id)
+            form(id= item ? item._id : '', data-section='skill')
                 .row
                     .col-xs-6
                         .form-group
                             label Titel
-                            input.admin-skill-title.form-control(data-prop="title.da", data-type="resume-form-field", value=item.title.da)
+                            input.resume-form-field.form-control(data-prop="title.da", value= item ? item.title.da : '')
                     .col-xs-6
                         .form-group
                             label Title
-                            input.admin-skill-title.form-control(data-prop="title.en", data-type="resume-form-field", value=item.title.en)
+                            input.resume-form-field.form-control(data-prop="title.en", value= item ? item.title.en : '')
                 .row
                     .col-xs-6
                         .form-group
                             label Rating
-                            input.admin-skill-company.form-control(type="number", min=1, max=5, data-prop="rating", data-type="resume-form-field", value=item.rating)
+                            input.resume-form-field.form-control(type="number", min=1, max=5, data-prop="rating", value= item ? item.rating : '')
 
                     .col-xs-6
                         .form-group
                             label &nbsp;
                             .row
                                 .col-xs-6
-                                    button.btn.btn-success.btn-admin-save.form-control(type='button')= strings.buttons.save.da
+                                    button.btn.btn-success.btn-admin-save.form-control(type='button') Gem
                                 .col-xs-6
-                                    button.btn.btn-warning.btn-admin-delete.form-control(type='button')
+                                    button.btn.btn-danger.btn-admin-delete.form-control(type='button')
                                         span.glyphicon.glyphicon-remove
-                                        | #{strings.buttons.delete.da}
+                                        | Slet

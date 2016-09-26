@@ -84,6 +84,7 @@ module.exports = function(app, passport) {
     // ADMIN (protected) ===================
     // =====================================
     app.get('/admin', isLoggedIn, function(req, res) {
+    //app.get('/admin', function(req, res) {
 
         async.parallel({
             education: function(cb){
@@ -130,6 +131,7 @@ module.exports = function(app, passport) {
 
 
     app.put('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+    //app.put('/admin', function(req, res, next) {
          var msg;
         var data = req.body;
         var section = data.section;
@@ -174,6 +176,7 @@ module.exports = function(app, passport) {
 
 
     app.delete('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+    //app.delete('/admin', function(req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -252,6 +255,19 @@ module.exports = function(app, passport) {
         }
         // redirect back
         res.redirect('back');
+    });
+
+
+
+
+
+    // =====================================
+    // VIEW                                =
+    // =====================================
+    app.get('/templates/:section', function(req, res) {
+        var section = req.params.section;
+        var template = `partials/admin/${section}`;
+        res.render(template);
     });
 
 

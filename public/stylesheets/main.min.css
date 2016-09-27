@@ -282,9 +282,12 @@ img {
 .btn .glyphicon {
   margin-right: 6px;
 }
-.btn-skills {
-  padding: 10px;
+.skills-header-section {
   cursor: pointer;
+  padding: 2px;
+}
+.skills-header-arrow {
+  margin-left: 10px;
 }
 .skills-more {
   -webkit-transform: rotate(180deg);

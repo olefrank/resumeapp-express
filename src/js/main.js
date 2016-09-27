@@ -2,14 +2,15 @@
 
 // skills click handler
 $(function () {
-    var btnMore = $('#btn-skills-more');
+    var skills = $('.skills-header-section');
+    var arrow = $('.skills-header-arrow');
 
     var skillsClickHandler = function (e) {
-        btnMore.toggleClass('skills-more');
-        btnMore.toggleClass('skills-less');
+        arrow.toggleClass('skills-more');
+        arrow.toggleClass('skills-less');
     };
 
-    $(document).on('click', '#btn-skills-more', skillsClickHandler);
+    $(document).on('click', '.skills-header-section', skillsClickHandler);
 });
 
 

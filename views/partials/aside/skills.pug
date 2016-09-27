@@ -1,8 +1,7 @@
 .skills.section
-    h4.skills-header.text-success= strings.headings.skills
-    .btn-skills-slide-arrows
-        #btn-skills-more.btn-skills.skills-more
-            i.fa.fa-chevron-up(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+    .skills-header-section(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
+        h4.skills-header.text-success= strings.headings.skills
+        i.fa.fa-chevron-up.skills-header-arrow.skills-more
 
     ul.list-group
         each skill, i in skills

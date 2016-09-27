@@ -130,7 +130,7 @@ module.exports = function(app, passport) {
 
 
 
-    app.put('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+    app.put('/admin', [isLoggedIn, isAuthorized, function(req, res, next) {
     //app.put('/admin', function(req, res, next) {
          var msg;
         var data = req.body;
@@ -170,11 +170,11 @@ module.exports = function(app, passport) {
                 return next(new CustomError(msg, 200));
             });
         });
-    });
+    }]);
 
 
 
-    app.post('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+    app.post('/admin', [isLoggedIn, isAuthorized, function(req, res, next) {
     //app.post('/admin', function(req, res, next) {
         var msg;
         var data = req.body;
@@ -184,8 +184,6 @@ module.exports = function(app, passport) {
             msg = strings.messages.id_undefined.da;
             return next(new CustomError(msg, 500));
         }
-
-        console.log(data);
 
         // get model
         var schema = getModelForSection(section);
@@ -201,27 +199,20 @@ module.exports = function(app, passport) {
             msg = strings.messages.save_successful.da;
             return next(new CustomError(msg, 200));
         });
-    });
+    }]);
 
     var createSchemaInstance = function(schema, data) {
         var props = {};
 
         schema.schema.eachPath(function(path) {
-            console.log(path);
             if (data.hasOwnProperty(path)) {
                 props[path] = data[path];
             }
         });
-
-        console.log(props);
-
         return schema(props);
     };
 
-
-
-    app.delete('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
-    //app.delete('/admin', function(req, res, next) {
+    app.delete('/admin', [isLoggedIn, isAuthorized, function(req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -249,7 +240,7 @@ module.exports = function(app, passport) {
             msg = strings.messages.delete_successful.da;
             return next(new CustomError(msg, 200));
         });
-    });
+    }]);
 
 
 

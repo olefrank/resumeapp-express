@@ -22,37 +22,37 @@ let volounteering = require('../models/volounteering');
 let profile = require('../models/profile');
 
 
-module.exports = function(app, passport) {
+module.exports = function (app, passport) {
 
     // =====================================
     // HOME PAGE ===========================
     // =====================================
-    app.get('/', function(req, res, next) {
+    app.get('/', function (req, res, next) {
         var lang = req.cookies[appconfig.cookies.locale.name] || 'da';
 
         async.parallel({
-            education: function(cb) {
+            education: function (cb) {
                 education.find({}, cb);
             },
-            experience: function(cb) {
+            experience: function (cb) {
                 experience.find({}, cb);
             },
-            language: function(cb) {
+            language: function (cb) {
                 language.find({}, cb);
             },
-            project: function(cb) {
+            project: function (cb) {
                 project.find({}, cb);
             },
-            skill: function(cb) {
+            skill: function (cb) {
                 skill.find({}, cb);
             },
-            volounteering: function(cb) {
+            volounteering: function (cb) {
                 volounteering.find({}, cb);
             },
-            profile: function(cb) {
+            profile: function (cb) {
                 profile.findOne({}, cb);
             }
-        }, function(err, results) {
+        }, function (err, results) {
             if (err) {
                 console.log(err);
             }
@@ -65,74 +65,70 @@ module.exports = function(app, passport) {
 
             // render in template
             res.render('index', {
-                educations       : filtered.education,
-                experiences      : filtered.experience,
-                languages        : filtered.language,
-                projects         : filtered.project,
-                skills           : filtered.skill,
-                volounteerings   : filtered.volounteering,
-                profile          : filtered.profile,
-                strings          : filterLanguage(lang, strings),
-                user             : req.user
+                educations: filtered.education,
+                experiences: filtered.experience,
+                languages: filtered.language,
+                projects: filtered.project,
+                skills: filtered.skill,
+                volounteerings: filtered.volounteering,
+                profile: filtered.profile,
+                strings: filterLanguage(lang, strings),
+                user: req.user
             });
         });
     });
-
 
 
     // =====================================
     // ADMIN (protected) ===================
     // =====================================
-    app.get('/admin', isLoggedIn, function(req, res) {
-    //app.get('/admin', function(req, res) {
+    app.get('/admin', isLoggedIn, function (req, res) {
 
         async.parallel({
-            education: function(cb){
+            education: function (cb) {
                 education.find({}, cb);
             },
-            experience: function(cb){
+            experience: function (cb) {
                 experience.find({}, cb);
             },
-            language: function(cb){
+            language: function (cb) {
                 language.find({}, cb);
             },
-            project: function(cb){
+            project: function (cb) {
                 project.find({}, cb);
             },
-            skill: function(cb){
+            skill: function (cb) {
                 skill.find({}, cb);
             },
-            volounteering: function(cb){
+            volounteering: function (cb) {
                 volounteering.find({}, cb);
             },
-            profile: function(cb){
+            profile: function (cb) {
                 profile.find({}, cb);
             }
-        }, function(err, results){
+        }, function (err, results) {
             if (err) {
                 console.log(err);
             }
 
             res.render('admin', {
-                educations      : results.education,
-                experiences     : results.experience,
-                languages       : results.language,
-                projects        : results.project,
-                skills          : results.skill,
-                volounteerings  : results.volounteering,
-                profile         : results.profile[0],
-                strings         : strings,
-                user            : req.user,
-                isAdmin         : true
+                educations: results.education,
+                experiences: results.experience,
+                languages: results.language,
+                projects: results.project,
+                skills: results.skill,
+                volounteerings: results.volounteering,
+                profile: results.profile[0],
+                strings: strings,
+                user: req.user,
+                isAdmin: true
             });
         });
     });
 
 
-
-    app.put('/admin', [isLoggedIn, isAuthorized, function(req, res, next) {
-    //app.put('/admin', function(req, res, next) {
-         var msg;
+    app.put('/admin', [isLoggedIn, isAuthorized], function (req, res, next) {
+        var msg;
         var data = req.body;
         var section = data.section;
         var _id = data._id;
@@ -146,7 +142,7 @@ module.exports = function(app, passport) {
         var model = getModelForSection(section);
 
         // find
-        model.findById(_id, function(err, result) {
+        model.findById(_id, function (err, result) {
             if (err) {
                 msg = strings.messages.id_not_found.da;
                 return next(new CustomError(msg, 500));
@@ -154,13 +150,13 @@ module.exports = function(app, passport) {
 
             // update
             if (result) {
-                Object.keys(data).forEach(function(key) {
+                Object.keys(data).forEach(function (key) {
                     result[key] = data[key];
                 });
             }
 
             // save
-            result.save(function(err) {
+            result.save(function (err) {
                 if (err) {
                     msg = strings.messages.something_went_wrong.da;
                     console.log(err); // ofj: use proper logger
@@ -170,12 +166,11 @@ module.exports = function(app, passport) {
                 return next(new CustomError(msg, 200));
             });
         });
-    }]);
+    });
 
 
-
-    app.post('/admin', [isLoggedIn, isAuthorized, function(req, res, next) {
-    //app.post('/admin', function(req, res, next) {
+    app.post('/admin', [isLoggedIn, isAuthorized], function (req, res, next) {
+        //app.post('/admin', function(req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -189,7 +184,7 @@ module.exports = function(app, passport) {
         var schema = getModelForSection(section);
         var instance = createSchemaInstance(schema, data);
 
-        instance.save(function(err) {
+        instance.save(function (err) {
             if (err) {
                 msg = strings.messages.something_went_wrong.da;
                 console.log(err); // ofj: use proper logger
@@ -199,20 +194,9 @@ module.exports = function(app, passport) {
             msg = strings.messages.save_successful.da;
             return next(new CustomError(msg, 200));
         });
-    }]);
+    });
 
-    var createSchemaInstance = function(schema, data) {
-        var props = {};
-
-        schema.schema.eachPath(function(path) {
-            if (data.hasOwnProperty(path)) {
-                props[path] = data[path];
-            }
-        });
-        return schema(props);
-    };
-
-    app.delete('/admin', [isLoggedIn, isAuthorized, function(req, res, next) {
+    app.delete('/admin', [isLoggedIn, isAuthorized], function (req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -229,7 +213,7 @@ module.exports = function(app, passport) {
         var model = getModelForSection(section);
 
         // find and delete
-        model.findByIdAndRemove(_id, function(err) {
+        model.findByIdAndRemove(_id, function (err) {
             if (err) {
                 msg = strings.messages.id_not_found.da;
                 console.log(msg); // ofj: use proper logger
@@ -240,52 +224,44 @@ module.exports = function(app, passport) {
             msg = strings.messages.delete_successful.da;
             return next(new CustomError(msg, 200));
         });
-    }]);
-
-
+    });
 
 
     // =====================================
     // LOGIN ===============================
     // =====================================
     // show the login form
-    app.get('/login', function(req, res) {
-        res.render('login', { message: req.flash('loginMessage') });
+    app.get('/login', function (req, res) {
+        res.render('login', {message: req.flash('loginMessage')});
     });
 
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/admin',
-        failureRedirect : '/login',
-        failureFlash : true
+        successRedirect: '/admin',
+        failureRedirect: '/login',
+        failureFlash: true
     }));
-
-
-
 
 
     // =====================================
     // LOGOUT ==============================
     // =====================================
-    app.get('/logout', function(req, res) {
+    app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
     });
 
 
-
-
-
     // =====================================
     // LANG (only used to switch language) =
     // =====================================
-    app.get('/lang/:lang', function(req, res) {
+    app.get('/lang/:lang', function (req, res) {
         var lang = req.params.lang;
         if (lang === 'da' || lang === 'en') {
             var cookieName = req.cookies[appconfig.cookies.locale.name];
 
             if (cookieName !== lang) {
-                res.cookie(appconfig.cookies.locale.name, lang, { expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 24) ) });
+                res.cookie(appconfig.cookies.locale.name, lang, {expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 24))});
             }
         }
         // redirect back
@@ -293,20 +269,14 @@ module.exports = function(app, passport) {
     });
 
 
-
-
-
     // =====================================
     // VIEW                                =
     // =====================================
-    app.get('/templates/:section', function(req, res) {
+    app.get('/templates/:section', function (req, res) {
         var section = req.params.section;
         var template = `partials/admin/${section}`;
         res.render(template);
     });
-
-
-
 
 
     // =====================================
@@ -339,14 +309,14 @@ function isLoggedIn(req, res, next) {
 // route middleware: make sure user is permitted to perform action
 function isAuthorized(req, res, next) {
     // test user not permitted
-    if (req.user && req.user.local.email === 'test@test.com') {
+    console.log(req.userl);
+    console.log(req.user.local.email);
+    if (req.user && req.user.local.email === 'test@test.dk') {
         var msg = strings.messages.not_allowed.da;
         return next(new CustomError(msg, 403));
     }
     else return next();
 }
-
-
 
 
 function getModelForSection(section) {
@@ -381,10 +351,22 @@ function getModelForSection(section) {
 
 
 // filter json obj by language
-var filterLanguage = function(language, obj) {
+var filterLanguage = function (language, obj) {
     return traverse(obj).map(function (item) {
         if (this.key === language) {
             this.parent.update(item);
         }
     });
+};
+
+
+var createSchemaInstance = function (schema, data) {
+    var props = {};
+
+    schema.schema.eachPath(function (path) {
+        if (data.hasOwnProperty(path)) {
+            props[path] = data[path];
+        }
+    });
+    return schema(props);
 };

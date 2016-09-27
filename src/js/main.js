@@ -1,29 +1,29 @@
 "use strict";
 
 // skills click handler
-$(function() {
-    var btnArr = [];
-    btnArr.push( $('#btn-skills-more') );
-    btnArr.push( $('#btn-skills-less') );
-    var skillsClickHandler = function() {
-        btnArr.forEach( function(btn) { btn.toggleClass('hidden') } );
+$(function () {
+    var btnMore = $('#btn-skills-more');
+
+    var skillsClickHandler = function (e) {
+        btnMore.toggleClass('skills-more');
+        btnMore.toggleClass('skills-less');
     };
-    btnArr.forEach( function(btn) { btn.on('click', skillsClickHandler); } );
+
+    $(document).on('click', '#btn-skills-more', skillsClickHandler);
 });
 
 
-
 // smooth scroll to anchor
-$(function() {
-    $('a[href*="#"]:not([href="#"])').on('click', function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+$(function () {
+    $('a[href*="#"]:not([href="#"])').on('click', function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
 
             // switch active class
             $('.active').removeClass('active');
             target.parent().addClass('active');
 
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
                 $('html, body').animate({
                     scrollTop: target.offset().top - 20
@@ -35,16 +35,15 @@ $(function() {
 });
 
 
-
 // modal
-$(function() {
+$(function () {
 
     var panelType;
     var modalContent;
     var modalBody;
 
     //triggered when modal is about to be shown
-    $('#resume-modal').on('show.bs.modal', function(e) {
+    $('#resume-modal').on('show.bs.modal', function (e) {
 
         modalContent = $('#modal-content');
         modalBody = $('#modal-body');
@@ -83,28 +82,26 @@ $(function() {
 });
 
 
-
 // kill modal on close
 $('body').on('hidden.bs.modal', '.modal', function () {
     $(this).removeData('bs.modal');
 });
 
 
-
 // 'read more' slide down
-$(function() {
+$(function () {
 
     var $el, $p, $ps, $up, totalHeight;
 
-    $("#profile .read-more").on('click', function() {
+    $("#profile .read-more").on('click', function () {
         totalHeight = 0;
 
         $el = $(this);
-        $p  = $el.parent();
+        $p = $el.parent();
         $ps = $p.find("p");
 
         // measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
-        $ps.each(function() {
+        $ps.each(function () {
             totalHeight += $(this).outerHeight();
         });
 
@@ -115,70 +112,94 @@ $(function() {
             })
             .animate({
                 "height": totalHeight
-            },400);
+            }, 400);
 
         // fade out read-more
         $el.css({"display": "none"});
 
         // prevent jump-down
         return false;
-
     });
-
 });
 
 
-// admin PUT data
-$(function() {
-    $(document).on('click', '.btn-admin-save', function(e) {
+// admin btns
+$(function () {
+
+    var btnSaveHandler = function (e) {
         e.preventDefault();
 
-        var data = {};
+        var data;
 
         // parent form
         var form = $(this).closest('form');
 
-        // get section/id
-        var section = form.data('section');
+        // elem id
         var id = form.attr('id');
 
-        // get data from relevant fields
-        data = getData(section, id);
+        // create new elem
+        if (!id) {
+            if (confirm('Vil du gemme elementet?')) {
+                // collect data
+                data = getData(form, false);
 
-        // if data is empty
-        if ( Object.keys(data).length === 0 && data.constructor === Object ) {
-            toastr.error('Fejl! Ingen elementer fundet at opdatere');
-        }
-        else {
-            // post data to endpoint
-            if (confirm('Vil du ændre elementet?')) {
                 $.ajax({
-                    method: "PUT",
+                    method: 'POST',
                     url: "/admin",
                     data: data,
                     contentType: 'application/json'
-                }).done(function(data, textStatus, jqXHR) {
+                }).done(function (data, textStatus, jqXHR) {
                     toastr.success(data);
-                }).fail(function(jqXHR, textStatus, errorThrown) {
+                }).fail(function (jqXHR, textStatus, errorThrown) {
                     toastr.error(jqXHR.responseText);
                 });
             }
         }
-    });
+        // update existing
+        else {
+            if (confirm('Vil du gemme ændringerne?')) {
+                // collect data
+                data = getData(form, true);
 
-    function getData(section, id) {
-        var data = {_id: id, section: section};
-        var query = "#" + id + "[data-section='" + section + "'] .resume-form-field";
+                $.ajax({
+                    method: 'PUT',
+                    url: "/admin",
+                    data: data,
+                    contentType: 'application/json'
+                }).done(function (data, textStatus, jqXHR) {
+                    toastr.success(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    toastr.error(jqXHR.responseText);
+                });
+            }
+        }
+    };
+
+    function getData(form, expandProps) {
         var item;
+        var data = {};
+
+        var id = form.attr('id');
+        var section = form.data('section');
+
+        if (id) data._id = id;
+        if (section) data.section = section;
 
         // collect data from each field
-        $( query ).each(function() {
+        $(form).find('.resume-form-field').each(function () {
             item = $(this)[0];
             var path = item.dataset.prop;
             var val = item.innerHTML || item.checked || item.value;
-            set(data, path, val);
-        });
 
+            // create nested structure
+            if (expandProps) {
+                set(data, path, val);
+            }
+            // create flat structure
+            else {
+                data[path] = val;
+            }
+        });
         return JSON.stringify(data);
     }
 
@@ -186,32 +207,16 @@ $(function() {
         var schema = obj;  // a moving reference to internal objects within obj
         var arr = path.split('.');
         var len = arr.length;
-
-        // ofj: virker ikke - hvorfor SO?
-        //arr.forEach(function(elem) {
-        //    if ( !schema[elem] ) {
-        //        schema[elem] = {};
-        //    }
-        //    schema = schema[elem];
-        //});
-        //schema[a  rr[len - 1]] = value;
-        //return schema;
-
-        for(var i = 0; i < len-1; i++) {
+        for (var i = 0; i < len - 1; i++) {
             var elem = arr[i];
-            if( !schema[elem] ) schema[elem] = {};
+            if (!schema[elem]) schema[elem] = {};
             schema = schema[elem];
         }
-        schema[arr[len-1]] = value;
+        schema[arr[len - 1]] = value;
         return schema;
     }
-});
 
-
-// admin DELETE data
-$(function() {
-
-    $(document).on('click', '.btn-admin-delete', function(e) {
+    var btnDeleteHandler = function (e) {
         e.preventDefault();
 
         var btn = $(this);
@@ -221,7 +226,7 @@ $(function() {
         // get section/id
         var data = {};
         data.section = form.data('section');
-        data._id = form.data('id');
+        data._id = form.attr('id');
 
         // new element - not in database yet
         if (!data._id) {
@@ -235,29 +240,24 @@ $(function() {
                     url: "/admin",
                     data: JSON.stringify(data),
                     contentType: 'application/json'
-                }).done(function(data, textStatus, jqXHR) {
+                }).done(function (data, textStatus, jqXHR) {
                     removeElement(btn, $(this));
                     toastr.success(data);
-                }).fail(function(jqXHR, textStatus, errorThrown) {
+                }).fail(function (jqXHR, textStatus, errorThrown) {
                     toastr.error(jqXHR.responseText);
                 });
             }
         }
-    });
+    };
 
     // remove dom element
-    function removeElement(context, elem) {
-        context.closest('.admin-element').hide('normal', function() {
+    var removeElement = function(context, elem) {
+        context.closest('.admin-element').hide('normal', function () {
             elem.remove();
         });
-    }
-});
+    };
 
-
-// admin POST data
-$(function() {
-
-    $('.btn-admin-addnew').on('click', function (e) {
+    var btnAddNewHandler = function (e) {
         e.preventDefault();
 
         var btn = $(this).closest('.add-new-element');
@@ -269,19 +269,27 @@ $(function() {
         var section = form.data('section');
 
         // get template
-        $.get('/templates/' + section).then(function(html) {
+        $.get('/templates/' + section).then(function (html) {
             // insert
             $(html).hide().prependTo(".element-list-" + section).fadeIn("normal");
         });
-    });
+    };
+
+    // admin SAVE data
+    $(document).on('click', '.btn-admin-save', btnSaveHandler);
+
+    // admin DELETE data
+    $(document).on('click', '.btn-admin-delete', btnDeleteHandler);
+
+    // show 'add new' template
+    $(document).on('click', '.btn-admin-addnew', btnAddNewHandler);
 });
 
-// admin tabs
-$(function() {
 
+// admin tabs
+$(function () {
     $('#admin-tabs a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
     })
-
 });

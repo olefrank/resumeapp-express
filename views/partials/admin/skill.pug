@@ -24,8 +24,8 @@
                             label &nbsp;
                             .row
                                 .col-xs-6
-                                    button.btn.btn-success.btn-admin-save.form-control(type='button') Gem
+                                    button.btn.btn-success.btn-admin-save.form-control(type='button', data-id= item ? item._id : '', data-section='skill') Gem
                                 .col-xs-6
-                                    button.btn.btn-danger.btn-admin-delete.form-control(type='button')
+                                    button.btn.btn-danger.btn-admin-delete.form-control(type='button', data-id= item ? item._id : '', data-section='skill')
                                         span.glyphicon.glyphicon-remove
                                         | Slet

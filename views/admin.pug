@@ -10,17 +10,17 @@ block content
         ul#admin-tabs.nav.nav-tabs(role='tablist')
             li.active(role='presentation')
                 a(href='#admin-tab-profile', aria-controls='home', role='tab', data-toggle='tab') Profil
-            li(role='presentation')
+            li.tab-primary(role='presentation')
                 a(href='#admin-tab-experience', aria-controls='profile', role='tab', data-toggle='tab') Erfaring
-            li(role='presentation')
+            li.tab-success(role='presentation')
                 a(href='#admin-tab-education', aria-controls='profile', role='tab', data-toggle='tab') Uddannelse
-            li(role='presentation')
+            li.tab-warning(role='presentation')
                 a(href='#admin-tab-projects', aria-controls='home', role='tab', data-toggle='tab') Projekter
-            li(role='presentation')
+            li.tab-default(role='presentation')
                 a(href='#admin-tab-skills', aria-controls='profile', role='tab', data-toggle='tab') Skills
-            li(role='presentation')
+            li.tab-success(role='presentation')
                 a(href='#admin-tab-languages', aria-controls='profile', role='tab', data-toggle='tab') Sprog
-            li(role='presentation')
+            li.tab-info(role='presentation')
                 a(href='#admin-tab-volounteer', aria-controls='profile', role='tab', data-toggle='tab') Frivillig
 
 
@@ -28,11 +28,11 @@ block content
         // Tab panes
         .tab-content
 
-            #admin-tab-profile.tab-pane.active(role='tabpanel')
+            #admin-tab-profile.tab-pane.fade.in.active(role='tabpanel')
                 h3 Profil
                 include partials/admin/profile
 
-            #admin-tab-experience.tab-pane(role='tabpanel')
+            #admin-tab-experience.tab-pane.fade(role='tabpanel')
                 h3 Erfaring
                 - var color = 'primary'
                 include partials/admin/add-new-element
@@ -40,7 +40,7 @@ block content
                     each item,index in experiences
                         include partials/admin/experience
 
-            #admin-tab-education.tab-pane(role='tabpanel')
+            #admin-tab-education.tab-pane.fade(role='tabpanel')
                 h3 Uddannelse
                 - var color = 'success'
                 include partials/admin/add-new-element
@@ -48,7 +48,7 @@ block content
                     each item,index in educations
                         include partials/admin/education
 
-            #admin-tab-projects.tab-pane(role='tabpanel')
+            #admin-tab-projects.tab-pane.fade(role='tabpanel')
                 h3 Projekter
                 - var color = 'warning'
                 include partials/admin/add-new-element
@@ -56,7 +56,7 @@ block content
                     each item,index in projects
                         include partials/admin/project
 
-            #admin-tab-skills.tab-pane(role='tabpanel')
+            #admin-tab-skills.tab-pane.fade(role='tabpanel')
                 h3 Skills
                 - var color = 'default'
                 include partials/admin/add-new-element
@@ -64,7 +64,7 @@ block content
                     each item,index in skills
                         include partials/admin/skill
 
-            #admin-tab-languages.tab-pane(role='tabpanel')
+            #admin-tab-languages.tab-pane.fade(role='tabpanel')
                 h3 Sprog
                 - var color = 'success'
                 include partials/admin/add-new-element
@@ -72,7 +72,7 @@ block content
                     each item,index in languages
                         include partials/admin/language
 
-            #admin-tab-volounteer.tab-pane(role='tabpanel')
+            #admin-tab-volounteer.tab-pane.fade(role='tabpanel')
                 h3 Frivillig
                 - var color = 'info'
                 include partials/admin/add-new-element

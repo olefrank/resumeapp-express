@@ -167,11 +167,56 @@ module.exports = function(app, passport) {
                     return next(new CustomError(msg, 500));
                 }
                 msg = strings.messages.save_successful.da;
-                console.log(msg); // ofj: use proper logger
                 return next(new CustomError(msg, 200));
             });
         });
     });
+
+
+
+    app.post('/admin', isLoggedIn, isAuthorized, function(req, res, next) {
+    //app.post('/admin', function(req, res, next) {
+        var msg;
+        var data = req.body;
+        var section = data.section;
+
+        if (!section) {
+            msg = strings.messages.id_undefined.da;
+            return next(new CustomError(msg, 500));
+        }
+
+        console.log(data);
+
+        // get model
+        var schema = getModelForSection(section);
+        var instance = createSchemaInstance(schema, data);
+
+        instance.save(function(err) {
+            if (err) {
+                msg = strings.messages.something_went_wrong.da;
+                console.log(err); // ofj: use proper logger
+                return next(new CustomError(msg, 500));
+            }
+
+            msg = strings.messages.save_successful.da;
+            return next(new CustomError(msg, 200));
+        });
+    });
+
+    var createSchemaInstance = function(schema, data) {
+        var props = {};
+
+        schema.schema.eachPath(function(path) {
+            console.log(path);
+            if (data.hasOwnProperty(path)) {
+                props[path] = data[path];
+            }
+        });
+
+        console.log(props);
+
+        return schema(props);
+    };
 
 
 
@@ -192,17 +237,16 @@ module.exports = function(app, passport) {
         // get model
         var model = getModelForSection(section);
 
-        // find
-        // find the user with id 4
+        // find and delete
         model.findByIdAndRemove(_id, function(err) {
             if (err) {
                 msg = strings.messages.id_not_found.da;
+                console.log(msg); // ofj: use proper logger
                 return next(new CustomError(msg, 500));
             }
 
             // message to client
             msg = strings.messages.delete_successful.da;
-            console.log(msg); // ofj: use proper logger
             return next(new CustomError(msg, 200));
         });
     });

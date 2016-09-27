@@ -30,6 +30,7 @@ app.set('view engine', 'pug');
 // static routes
 app.use('/lib/bootstrap', express.static(path.join(__dirname,'/node_modules/bootstrap/dist/')));
 app.use('/lib/jquery', express.static(path.join(__dirname,'/node_modules/jquery/dist')));
+app.use('/lib/font-awesome', express.static(path.join(__dirname,'/node_modules/font-awesome/')));
 app.use('/lib/moment', express.static(path.join(__dirname,'/node_modules/moment/')));
 app.use('/lib/toastr', express.static(path.join(__dirname,'/node_modules/toastr/build/')));
 

@@ -1,9 +1,7 @@
 .skills.section
     h4.skills-header.text-success= strings.headings.skills
     .btn-skills-slide-arrows
-        #btn-skills-more.btn-skills
-            i.fa.fa-chevron-down(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
-        #btn-skills-less.btn-skills.hidden
+        #btn-skills-more.btn-skills.skills-more
             i.fa.fa-chevron-up(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
 
     ul.list-group
@@ -16,9 +14,3 @@
             each skill, i in skills
                 if i >= 5
                     li.list-group-item.sidebar-list-item= skill.title
-
-    //button#btn-skills-more.btn.btn-primary.btn-skills(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
-    //    i.fa.fa-chevron-down
-
-    //button#btn-skills-less.btn.btn-primary.btn-skills.hidden(type='button', data-toggle='collapse', data-target='#collapseExample', aria-expanded='false', aria-controls='collapseExample')
-    //    i.fa.fa-chevron-up

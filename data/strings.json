@@ -44,6 +44,10 @@
     "delete_successful": {
       "da": "Elementet er slettet",
       "en": "Element successfully deleted"
+    },
+    "not_saved": {
+      "da": "Ændringen blev ikke gemt",
+      "en": "Failed to save changes"
     }
 
   },

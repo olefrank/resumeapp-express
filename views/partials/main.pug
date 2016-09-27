@@ -11,19 +11,13 @@ main.col-sm-height.content
 
 
 
-        // current position
+        // current positions
         section#current-position.well
             h3= strings.headings.current
             .row.row-with-padding
-
-                 if experiences.length > 1
-                    each exp,index in experiences
-                        .col-md-6
-                            include panels/panel-current-experience
-                 else
-                    each exp,index in experiences
-                        .col-md-12
-                            include panels/panel-current-experience
+                each exp,index in experiences
+                    .col-md-12
+                        include panels/panel-current-experience
 
 
 
@@ -31,9 +25,15 @@ main.col-sm-height.content
         section#experience.well
             h3= strings.headings.experience
             .row.row-with-padding
-                each exp,index in experiences
-                    .col-md-6
-                        include panels/panel-experience
+
+                if experiences.length > 1
+                    each exp,index in experiences
+                        .col-md-6
+                            include panels/panel-experience
+                else
+                    each edu,index in educations
+                        .col-md-12
+                            include panels/panel-education
 
 
 
@@ -45,6 +45,10 @@ main.col-sm-height.content
                 if educations.length > 1
                     each edu,index in educations
                         .col-md-6
+                            include panels/panel-education
+                else
+                    each edu,index in educations
+                        .col-md-12
                             include panels/panel-education
 
 
@@ -58,6 +62,10 @@ main.col-sm-height.content
                     each project,index in projects
                         .col-md-6
                             include panels/panel-project
+                else
+                    each project,index in projects
+                        .col-md-12
+                            include panels/panel-project
 
 
 
@@ -65,8 +73,8 @@ main.col-sm-height.content
         section#volounteering.well
             h3= strings.headings.volounteering
             .row.row-with-padding
-                if volounteerings.length > 1
 
+                if volounteerings.length > 1
                     each vol,index in volounteerings
                         .col-md-6
                             include panels/panel-volounteering

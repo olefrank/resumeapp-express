@@ -1,31 +1,15 @@
 if !exp.currentPosition
-    if isAdmin
-        a.resume-component(data-component-type='experience', data-component-data=experiences_raw[index])
-            .panel.panel-primary.panel-hover
-                .panel-heading
-                    h3.panel-title= exp.title
-                .panel-body
-                    if exp.company
-                        p
-                            strong= exp.company.name
-                        if exp.start
-                            p.text-dimmed
-                                em= moment(exp.start).format('MMMM YYYY')
-                                |  -
-                                if (exp.end)
-                                    em= moment(exp.end).format('MMMM YYYY')
-    else
-        a.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='danger')
-            .panel.panel-primary.panel-hover
-                .panel-heading
-                    h3.panel-title= exp.title
-                .panel-body
-                    if exp.company
-                        p
-                            strong= exp.company.name
-                        if exp.start
-                            p.text-dimmed
-                                em= moment(exp.start).format('MMMM YYYY')
-                                |  -
-                                if (exp.end)
-                                    em= moment(exp.end).format('MMMM YYYY')
+    a.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='primary')
+        .panel.panel-primary.panel-hover
+            .panel-heading
+                h3.panel-title= exp.title
+            .panel-body
+                if exp.company
+                    p
+                        strong= exp.company.name
+                    if exp.start
+                        p.text-dimmed
+                            em= moment(exp.start).format('MMMM YYYY')
+                            |  -
+                            if (exp.end)
+                                em= moment(exp.end).format('MMMM YYYY')

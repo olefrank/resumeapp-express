@@ -1,18 +1,19 @@
 const appconfig = require('./config/app.config');
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const moment = require('moment');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
-var toastr    = require('express-toastr');
-var morgan       = require('morgan');
-var session      = require('express-session');
-var configDB = require('./config/database.js');
-var app = express();
+require('moment/locale/da');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash    = require('connect-flash');
+const toastr    = require('express-toastr');
+const morgan       = require('morgan');
+const session      = require('express-session');
+const configDB = require('./config/database.js');
+const app = express();
 
 // connect to our database
 mongoose.connect(configDB.url);
@@ -55,7 +56,7 @@ require('./routes/routes.js')(app, passport); // load our routes and pass in our
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

@@ -12,3 +12,6 @@ https://code.lengstorf.com/deploy-nodejs-ssl-digitalocean/
 
 node custom error:
 https://gist.github.com/justmoon/15511f92e5216fa2624b
+
+browserify:
+https://www.sitepoint.com/getting-started-browserify/

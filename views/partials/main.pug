@@ -15,7 +15,7 @@ main.col-sm-height.content
         section#current-position.well
             h3= strings.headings.current
             .row.row-with-padding
-                each exp,index in experiences
+                each item,index in experiences
                     .col-md-12
                         include panels/panel-current-experience
 
@@ -27,11 +27,11 @@ main.col-sm-height.content
             .row.row-with-padding
 
                 if experiences.length > 1
-                    each exp,index in experiences
+                    each item,index in experiences
                         .col-md-6
                             include panels/panel-experience
                 else
-                    each edu,index in educations
+                    each item,index in educations
                         .col-md-12
                             include panels/panel-education
 
@@ -43,11 +43,11 @@ main.col-sm-height.content
             .row.row-with-padding
 
                 if educations.length > 1
-                    each edu,index in educations
+                    each item,index in educations
                         .col-md-6
                             include panels/panel-education
                 else
-                    each edu,index in educations
+                    each item,index in educations
                         .col-md-12
                             include panels/panel-education
 
@@ -59,11 +59,11 @@ main.col-sm-height.content
             .row.row-with-padding
 
                 if projects.length > 1
-                    each project,index in projects
+                    each item,index in projects
                         .col-md-6
                             include panels/panel-project
                 else
-                    each project,index in projects
+                    each item,index in projects
                         .col-md-12
                             include panels/panel-project
 
@@ -75,10 +75,10 @@ main.col-sm-height.content
             .row.row-with-padding
 
                 if volounteerings.length > 1
-                    each vol,index in volounteerings
+                    each item,index in volounteerings
                         .col-md-6
                             include panels/panel-volounteering
                 else
-                    each vol,index in volounteerings
+                    each item,index in volounteerings
                         .col-md-12
                             include panels/panel-volounteering

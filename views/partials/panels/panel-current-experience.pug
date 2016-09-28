@@ -1,15 +1,15 @@
-if exp.currentPosition
-    a.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=exp, data-panel-type='danger')
+if item.currentPosition
+    .resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type='danger')
         .panel.panel-danger.panel-hover
             .panel-heading
-                h3.panel-title= exp.title
+                h3.panel-title= item.title
             .panel-body
-                if exp.company
+                if item.company
                     p
-                        strong= exp.company.name
-                    if exp.start
+                        strong= item.company.name
+                    if item.start
                         p.text-dimmed
-                            em= moment(exp.start).format('MMMM YYYY')
-                            |  -
-                            if (exp.end)
-                                em= moment(exp.end).format('MMMM YYYY')
+                            if item.end
+                                em #{moment(item.start).format('MMMM YYYY')} - #{moment(item.end).format('MMMM YYYY')}
+                            else
+                                em #{moment(item.start).format('MMMM YYYY')} -

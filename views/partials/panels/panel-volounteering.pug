@@ -1,31 +1,14 @@
-if isAdmin
-    a.resume-component(data-component-type='volounteer', data-component-data=volounteerings_raw[index])
-        .panel.panel-info.panel-hover
-            .panel-heading
-                h3.panel-title= vol.title
-            .panel-body
-                if vol.company
-                    p
-                        strong= vol.company.name
-                if vol.start
-                    p.text-dimmed
-                        em= moment(vol.start).format('MMMM YYYY')
-                        |  -
-                        if (vol.end)
-                            em= moment(vol.end).format('MMMM YYYY')
-
-else
-    a(data-toggle='modal', data-target='#resume-modal', data-modal-data=vol, data-panel-type='info')
-        .panel.panel-info.panel-hover
-            .panel-heading
-                h3.panel-title= vol.title
-            .panel-body
-                if vol.company
-                    p
-                        strong= vol.company.name
-                if vol.start
-                    p.text-dimmed
-                        em= moment(vol.start).format('MMMM YYYY')
-                        |  -
-                        if (vol.end)
-                            em= moment(vol.end).format('MMMM YYYY')
+a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type='info')
+    .panel.panel-info.panel-hover
+        .panel-heading
+            h3.panel-title= item.title
+        .panel-body
+            if item.company
+                p
+                    strong= item.company.name
+            if item.start
+                p.text-dimmed
+                    if item.end
+                        em #{moment(item.start).format('MMMM YYYY')} - #{moment(item.end).format('MMMM YYYY')}
+                    else
+                        em #{moment(item.start).format('MMMM YYYY')} -

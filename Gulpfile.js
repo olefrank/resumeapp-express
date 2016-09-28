@@ -1,5 +1,4 @@
-//npm install --save-dev babel-preset-es2015 babelify browserify chalk gulp gulp-duration gulp-livereload gulp-notify gulp-rename gulp-sourcemaps gulp-util utils-merge vinyl-buffer vinyl-source-stream watchify
-
+"use strict";
 
 const gulp = require("gulp"),
       concat = require("gulp-concat"),
@@ -17,7 +16,9 @@ const gulp = require("gulp"),
       watchify = require('watchify'),
       merge = require('utils-merge'),
       duration = require('gulp-duration'),
-      stripDebug = require('gulp-strip-debug');
+      stripDebug = require('gulp-strip-debug'),
+      changed = require('gulp-changed'),
+      imagemin = require('gulp-imagemin');
 
 
 
@@ -104,13 +105,15 @@ gulp.task('javascript', function() {
 });
 
 
-gulp.task("scripts", function(){
-    return gulp.src(config.paths.javascript.src)
-        .pipe(sourcemaps.init())
-        .pipe(concat("app.min.js"))
-        .pipe(uglify())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(config.paths.javascript.dest));
+// minify new images
+gulp.task('imagemin', function() {
+    let src = './src/images/**/*.{jpg,png,gif,svg,ico}';
+    let dest = './public/images';
+
+    gulp.src(src)
+        .pipe(changed(dest))
+        .pipe(imagemin())
+        .pipe(gulp.dest(dest));
 });
 
 gulp.task("less", function(){
@@ -122,11 +125,9 @@ gulp.task("less", function(){
         .pipe(gulp.dest(config.paths.less.dest));
 });
 
-gulp.task("build", ["scripts", "less"]);
-gulp.task("build2", ["javascript", "less"]);
+gulp.task("build", ["javascript", "less", "imagemin"]);
 
-gulp.task("default", ["build2"], function(){
-    //gulp.watch(config.paths.javascript.src, ["scripts"]);
+gulp.task("default", ["build"], function(){
     gulp.watch(config.paths.js.watch, ["javascript"]);
     gulp.watch(config.paths.less.src, ["less"]);
 });

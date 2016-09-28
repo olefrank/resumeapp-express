@@ -308,10 +308,8 @@ function isLoggedIn(req, res, next) {
 
 // route middleware: make sure user is permitted to perform action
 function isAuthorized(req, res, next) {
-    // test user not permitted
-    console.log(req.userl);
-    console.log(req.user.local.email);
-    if (req.user && req.user.local.email === 'test@test.dk') {
+    // guest user not permitted
+    if (req.user && req.user.local.role === 'guest') {
         var msg = strings.messages.not_allowed.da;
         return next(new CustomError(msg, 403));
     }

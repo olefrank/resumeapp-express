@@ -1,5 +1,6 @@
 const $ = require('jquery');
 const toastr = require('toastr');
+const url = "/resume/admin";
 
 exports = function() {
 
@@ -32,7 +33,7 @@ const btnDeleteHandler = function (e) {
         if (confirm('Vil du slette elementet?')) {
             $.ajax({
                 method: "DELETE",
-                url: "/admin",
+                url: url,
                 data: JSON.stringify(data),
                 contentType: 'application/json'
             }).done(function (data, textStatus, jqXHR) {

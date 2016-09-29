@@ -1,4 +1,7 @@
 // MAIN
+
+include fork-me-on-github
+
 main.col-sm-height.content
 
     .wrapper-inner
@@ -7,7 +10,8 @@ main.col-sm-height.content
         section#profile.well.content__profile
             h3= strings.headings.profile
             blockquote !{profile.summary}
-                p.read-more
+                .read-more
+                    a.text-info= strings.buttons.read_more
 
 
 

@@ -1,5 +1,6 @@
 const $ = require('jquery');
 const toastr = require('toastr');
+const url = "/resume/admin";
 
 exports = function() {
 
@@ -29,7 +30,7 @@ const btnSaveHandler = function (e) {
 
             $.ajax({
                 method: 'POST',
-                url: "/admin",
+                url: url,
                 data: data,
                 contentType: 'application/json'
             }).done(function (data, textStatus, jqXHR) {
@@ -47,7 +48,7 @@ const btnSaveHandler = function (e) {
 
             $.ajax({
                 method: 'PUT',
-                url: "/admin",
+                url: url,
                 data: data,
                 contentType: 'application/json'
             }).done(function (data, textStatus, jqXHR) {
@@ -61,22 +62,20 @@ const btnSaveHandler = function (e) {
 
 // collect data from form into JSON object
 const getData = function(form, expandProps) {
-    let item;
-    let data = {};
-
     const id = form.attr('id');
     const section = form.data('section');
+    let data;
     let path;
     let val;
 
+    data = {};
     if (id) data._id = id;
     if (section) data.section = section;
 
     // collect data from each field
     $(form).find('.resume-form-field').each(function () {
-        item = $(this)[0];
-        path = item.dataset.prop;
-        val = item.innerHTML || item.checked || item.value;
+        path = $(this).data('prop');
+        val = $(this).text() || $(this).attr('checked') || $(this).val();
 
         // create nested structure
         if (expandProps) {

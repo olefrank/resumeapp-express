@@ -72,7 +72,7 @@ var bundle = function(bundler) {
         .pipe(rename(config.paths.js.outputFile)) // Rename the output file
         .pipe(sourcemaps.init({loadMaps: true})) // Extract the inline sourcemaps
         .pipe(concat("app.min.js"))
-        .pipe(stripDebug())
+        //.pipe(stripDebug()) // ofj: only in production
         .pipe(uglify())
         .pipe(sourcemaps.write('.')) // Set folder for sourcemaps to output to
         .pipe(gulp.dest(config.paths.js.outputDir)) // Set the output folder

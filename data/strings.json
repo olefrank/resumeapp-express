@@ -16,6 +16,10 @@
     "delete": {
       "da": "Slet",
       "en": "Delete"
+    },
+    "read_more": {
+      "da": "Se mere",
+      "en": "See more"
     }
 
   },

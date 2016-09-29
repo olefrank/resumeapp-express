@@ -5,13 +5,9 @@ require('bootstrap');
 
 exports = function() {
 
-    console.log(moment.locale());
-    console.log("hejs");
-
     $(function() {
 
         const onModalShow = function (e) {
-            console.log("onmodalshow");
             let panelType,
                 modalContent = $('#modal-content'),
                 modalBody = $('#modal-body');

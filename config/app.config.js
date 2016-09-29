@@ -6,5 +6,8 @@ module.exports = {
     },
     session: {
         secret: "olebolegikiskole"
+    },
+    urls: {
+        base: "/resume"
     }
 };

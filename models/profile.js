@@ -8,6 +8,4 @@ var Profile = mongoose.Schema({
 
 });
 
-Profile.set('toObject', { virtuals: true });
-
 module.exports = mongoose.model('Profile', Profile, 'profile');

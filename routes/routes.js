@@ -21,13 +21,19 @@ let skill = require('../models/skill');
 let volounteering = require('../models/volounteering');
 let profile = require('../models/profile');
 
+let prefix = appconfig.urls.base;
+
 
 module.exports = function (app, passport) {
+
+    app.get('/', function (req, res, next) {
+        res.redirect(prefix);
+    });
 
     // =====================================
     // HOME PAGE ===========================
     // =====================================
-    app.get('/', function (req, res, next) {
+    app.get(prefix, function (req, res, next) {
         var lang = req.cookies[appconfig.cookies.locale.name] || 'da';
 
         async.parallel({
@@ -82,7 +88,7 @@ module.exports = function (app, passport) {
     // =====================================
     // ADMIN (protected) ===================
     // =====================================
-    app.get('/admin', isLoggedIn, function (req, res) {
+    app.get(`${prefix}/admin`, isLoggedIn, function (req, res) {
 
         async.parallel({
             education: function (cb) {
@@ -127,7 +133,7 @@ module.exports = function (app, passport) {
     });
 
 
-    app.put('/admin', [isLoggedIn, isAuthorized], function (req, res, next) {
+    app.put(`${prefix}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -169,7 +175,7 @@ module.exports = function (app, passport) {
     });
 
 
-    app.post('/admin', [isLoggedIn, isAuthorized], function (req, res, next) {
+    app.post(`${prefix}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
         //app.post('/admin', function(req, res, next) {
         var msg;
         var data = req.body;
@@ -196,7 +202,7 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.delete('/admin', [isLoggedIn, isAuthorized], function (req, res, next) {
+    app.delete(`${prefix}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -231,14 +237,14 @@ module.exports = function (app, passport) {
     // LOGIN ===============================
     // =====================================
     // show the login form
-    app.get('/login', function (req, res) {
-        res.render('login', {message: req.flash('loginMessage')});
+    app.get(`${prefix}/login`, function (req, res) {
+        res.render('login', {message: req.flash('loginMessage'), prefix: prefix});
     });
 
     // process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/admin',
-        failureRedirect: '/login',
+    app.post(`${prefix}/login`, passport.authenticate('local-login', {
+        successRedirect: `${prefix}/admin`,
+        failureRedirect: `${prefix}/login`,
         failureFlash: true
     }));
 
@@ -246,7 +252,7 @@ module.exports = function (app, passport) {
     // =====================================
     // LOGOUT ==============================
     // =====================================
-    app.get('/logout', function (req, res) {
+    app.get(`${prefix}/logout`, function (req, res) {
         req.logout();
         res.redirect('/');
     });
@@ -255,7 +261,7 @@ module.exports = function (app, passport) {
     // =====================================
     // LANG (only used to switch language) =
     // =====================================
-    app.get('/lang/:lang', function (req, res) {
+    app.get(`${prefix}/lang/:lang`, function (req, res) {
         var lang = req.params.lang;
         if (lang === 'da' || lang === 'en') {
             var cookieName = req.cookies[appconfig.cookies.locale.name];
@@ -272,7 +278,7 @@ module.exports = function (app, passport) {
     // =====================================
     // VIEW                                =
     // =====================================
-    app.get('/templates/:section', function (req, res) {
+    app.get(`${prefix}/templates/:section`, function (req, res) {
         var section = req.params.section;
         var template = `partials/admin/${section}`;
         res.render(template);
@@ -303,7 +309,7 @@ module.exports = function (app, passport) {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.redirect('/login');
+    res.redirect(`${prefix}/login`);
 }
 
 // route middleware: make sure user is permitted to perform action

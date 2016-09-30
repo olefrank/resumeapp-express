@@ -15,3 +15,5 @@ require('./readmore');
 
 // admin stuff
 require('./admin');
+
+require('./ga');

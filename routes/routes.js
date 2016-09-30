@@ -21,19 +21,19 @@ let skill = require('../models/skill');
 let volounteering = require('../models/volounteering');
 let profile = require('../models/profile');
 
-let prefix = appconfig.urls.base;
+let baseUrl = appconfig.urls.base;
 
 
 module.exports = function (app, passport) {
 
     app.get('/', function (req, res, next) {
-        res.redirect(prefix);
+        res.redirect(baseUrl);
     });
 
     // =====================================
     // HOME PAGE ===========================
     // =====================================
-    app.get(prefix, function (req, res, next) {
+    app.get(baseUrl, function (req, res, next) {
         var lang = req.cookies[appconfig.cookies.locale.name] || 'da';
 
         async.parallel({
@@ -79,7 +79,8 @@ module.exports = function (app, passport) {
                 volounteerings: filtered.volounteering,
                 profile: filtered.profile,
                 strings: filterLanguage(lang, strings),
-                user: req.user
+                user: req.user,
+                baseUrl: baseUrl
             });
         });
     });
@@ -88,7 +89,7 @@ module.exports = function (app, passport) {
     // =====================================
     // ADMIN (protected) ===================
     // =====================================
-    app.get(`${prefix}/admin`, isLoggedIn, function (req, res) {
+    app.get(`${baseUrl}/admin`, isLoggedIn, function (req, res) {
 
         async.parallel({
             education: function (cb) {
@@ -127,13 +128,13 @@ module.exports = function (app, passport) {
                 profile: results.profile[0],
                 strings: strings,
                 user: req.user,
-                isAdmin: true
+                baseUrl: baseUrl
             });
         });
     });
 
 
-    app.put(`${prefix}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
+    app.put(`${baseUrl}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -175,7 +176,7 @@ module.exports = function (app, passport) {
     });
 
 
-    app.post(`${prefix}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
+    app.post(`${baseUrl}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
         //app.post('/admin', function(req, res, next) {
         var msg;
         var data = req.body;
@@ -202,7 +203,7 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.delete(`${prefix}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
+    app.delete(`${baseUrl}/admin`, [isLoggedIn, isAuthorized], function (req, res, next) {
         var msg;
         var data = req.body;
         var section = data.section;
@@ -237,14 +238,14 @@ module.exports = function (app, passport) {
     // LOGIN ===============================
     // =====================================
     // show the login form
-    app.get(`${prefix}/login`, function (req, res) {
-        res.render('login', {message: req.flash('loginMessage'), prefix: prefix});
+    app.get(`${baseUrl}/login`, function (req, res) {
+        res.render('login', {message: req.flash('loginMessage'), prefix: baseUrl});
     });
 
     // process the login form
-    app.post(`${prefix}/login`, passport.authenticate('local-login', {
-        successRedirect: `${prefix}/admin`,
-        failureRedirect: `${prefix}/login`,
+    app.post(`${baseUrl}/login`, passport.authenticate('local-login', {
+        successRedirect: `${baseUrl}/admin`,
+        failureRedirect: `${baseUrl}/login`,
         failureFlash: true
     }));
 
@@ -252,7 +253,7 @@ module.exports = function (app, passport) {
     // =====================================
     // LOGOUT ==============================
     // =====================================
-    app.get(`${prefix}/logout`, function (req, res) {
+    app.get(`${baseUrl}/logout`, function (req, res) {
         req.logout();
         res.redirect('/');
     });
@@ -261,7 +262,7 @@ module.exports = function (app, passport) {
     // =====================================
     // LANG (only used to switch language) =
     // =====================================
-    app.get(`${prefix}/lang/:lang`, function (req, res) {
+    app.get(`${baseUrl}/lang/:lang`, function (req, res) {
         var lang = req.params.lang;
         if (lang === 'da' || lang === 'en') {
             var cookieName = req.cookies[appconfig.cookies.locale.name];
@@ -278,7 +279,7 @@ module.exports = function (app, passport) {
     // =====================================
     // VIEW                                =
     // =====================================
-    app.get(`${prefix}/templates/:section`, function (req, res) {
+    app.get(`${baseUrl}/templates/:section`, function (req, res) {
         var section = req.params.section;
         var template = `partials/admin/${section}`;
         res.render(template);
@@ -309,7 +310,7 @@ module.exports = function (app, passport) {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.redirect(`${prefix}/login`);
+    res.redirect(`${baseUrl}/login`);
 }
 
 // route middleware: make sure user is permitted to perform action

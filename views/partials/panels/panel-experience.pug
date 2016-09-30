@@ -1,6 +1,6 @@
 if !item.currentPosition
-    a.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type='primary')
-        .panel.panel-primary.panel-hover
+    a.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.experience)
+        .panel.panel-hover(class='panel-' + config.colors.experience)
             .panel-heading
                 h3.panel-title= item.title
             .panel-body

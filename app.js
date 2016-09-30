@@ -23,8 +23,12 @@ mongoose.connect(configDB.url);
 // pass passport for configuration
 require('./config/passport')(passport);
 
-// to use moment in templates
+// make variables available in templates
 app.locals.moment = moment;
+app.locals.config = {
+    baseUrl: appconfig.urls.base,
+    colors: appconfig.colors
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

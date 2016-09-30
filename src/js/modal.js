@@ -6,18 +6,14 @@ require('bootstrap');
 exports = function() {
 
     $(function() {
+        let modalContent = $('#modal-content'),
+            modalBody = $('#modal-body'),
+            classlist;
 
         const onModalShow = function (e) {
-            let panelType,
-                modalContent = $('#modal-content'),
-                modalBody = $('#modal-body');
-
             let type = $(e.relatedTarget).data('panel-type');
-            if (type !== panelType) {
-                modalContent.addClass('panel-' + type);
-                modalContent.removeClass('panel-' + panelType);
-                panelType = type;
-            }
+            classlist = `modal-content panel-${type}`;
+            modalContent.attr('class', classlist);
 
             //get data-id attribute of the clicked element
             let exp = $(e.relatedTarget).data('modal-data');

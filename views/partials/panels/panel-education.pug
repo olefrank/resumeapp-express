@@ -1,5 +1,5 @@
-a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type='success')
-    .panel.panel-success.panel-hover
+a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.education)
+    .panel.panel-hover(class='panel-' + config.colors.education)
         .panel-heading
             h3.panel-title= item.title
         .panel-body

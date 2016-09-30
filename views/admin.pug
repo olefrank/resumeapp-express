@@ -34,7 +34,7 @@ block content
 
             #admin-tab-experience.tab-pane.fade(role='tabpanel')
                 h3 Erfaring
-                - var color = 'primary'
+                - var color = config.colors.experience
                 include partials/admin/add-new-element
                 .element-list-experience
                     each item,index in experiences
@@ -42,7 +42,7 @@ block content
 
             #admin-tab-education.tab-pane.fade(role='tabpanel')
                 h3 Uddannelse
-                - var color = 'success'
+                - var color = config.colors.education
                 include partials/admin/add-new-element
                 .element-list-education
                     each item,index in educations
@@ -50,7 +50,7 @@ block content
 
             #admin-tab-projects.tab-pane.fade(role='tabpanel')
                 h3 Projekter
-                - var color = 'warning'
+                - var color = config.colors.project
                 include partials/admin/add-new-element
                 .element-list-project
                     each item,index in projects
@@ -58,7 +58,7 @@ block content
 
             #admin-tab-skills.tab-pane.fade(role='tabpanel')
                 h3 Skills
-                - var color = 'default'
+                - var color = config.colors.skill
                 include partials/admin/add-new-element
                 .element-list-skill
                     each item,index in skills
@@ -66,7 +66,7 @@ block content
 
             #admin-tab-languages.tab-pane.fade(role='tabpanel')
                 h3 Sprog
-                - var color = 'success'
+                - var color = config.colors.language
                 include partials/admin/add-new-element
                 .element-list-language
                     each item,index in languages
@@ -74,7 +74,7 @@ block content
 
             #admin-tab-volounteer.tab-pane.fade(role='tabpanel')
                 h3 Frivillig
-                - var color = 'info'
+                - var color = config.colors.volounteering
                 include partials/admin/add-new-element
                 .element-list-volounteering
                     each item,index in volounteerings

@@ -13,15 +13,14 @@ const async = require('async');
 const CustomError = require('./custom-error');
 
 // models
-let education = require('../models/education');
-let experience = require('../models/experience');
-let language = require('../models/language');
-let project = require('../models/project');
-let skill = require('../models/skill');
-let volounteering = require('../models/volounteering');
-let profile = require('../models/profile');
-
-let baseUrl = appconfig.urls.base;
+const education = require('../models/education');
+const experience = require('../models/experience');
+const language = require('../models/language');
+const project = require('../models/project');
+const skill = require('../models/skill');
+const volounteering = require('../models/volounteering');
+const profile = require('../models/profile');
+const baseUrl = appconfig.urls.base;
 
 
 module.exports = function (app, passport) {
@@ -79,8 +78,7 @@ module.exports = function (app, passport) {
                 volounteerings: filtered.volounteering,
                 profile: filtered.profile,
                 strings: filterLanguage(lang, strings),
-                user: req.user,
-                baseUrl: baseUrl
+                user: req.user
             });
         });
     });
@@ -127,8 +125,7 @@ module.exports = function (app, passport) {
                 volounteerings: results.volounteering,
                 profile: results.profile[0],
                 strings: strings,
-                user: req.user,
-                baseUrl: baseUrl
+                user: req.user
             });
         });
     });

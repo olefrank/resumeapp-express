@@ -52,6 +52,10 @@
     "not_saved": {
       "da": "Ændringen blev ikke gemt",
       "en": "Failed to save changes"
+    },
+    "db_connection_error": {
+      "da": "Fejl! Kan ikke forbinde til databasen",
+      "en": "Error connecting to database"
     }
 
   },

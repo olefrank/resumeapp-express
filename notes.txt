@@ -15,3 +15,10 @@ https://gist.github.com/justmoon/15511f92e5216fa2624b
 
 browserify:
 https://www.sitepoint.com/getting-started-browserify/
+
+bluebird:
+https://www.youtube.com/watch?v=hQxFymzhT3A
+
+express structure:
+http://stackoverflow.com/a/29852807/1736012
+https://www.terlici.com/2014/08/25/best-practices-express-structure.html

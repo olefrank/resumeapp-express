@@ -12,7 +12,7 @@ block content
           .alert.alert-danger= message
 
         // LOGIN FORM
-        form(action= prefix+'/login', method='post')
+        form(action= baseUrl+'/login', method='post')
           .form-group
             label Email
             input.form-control(name='email', autofocus)

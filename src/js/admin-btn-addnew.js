@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var baseUrl = require('../../config/app.config').urls.base;
 
 exports = function() {
 
@@ -21,7 +22,7 @@ const btnAddNewHandler = function (e) {
     let section = form.data('section');
 
     // get template
-    $.get('/templates/' + section).then(function (html) {
+    $.get(`${baseUrl}/templates/` + section).then(function (html) {
         // insert
         $(html).hide().prependTo(".element-list-" + section).fadeIn("normal");
     });

@@ -28,12 +28,12 @@
                     .col-xs-6
                         .form-group
                             label Beskrivelse
-                            .resume-form-field(contentEditable, data-prop="description.da")= item ? item.description.da : 'Beskrivelse her...'
+                            .resume-form-field(contentEditable="", data-prop="description.da")= item ? item.description.da : 'Beskrivelse her...'
 
                     .col-xs-6
                         .form-group
                             label Description
-                            .resume-form-field(contentEditable, data-prop="description.en")= item ? item.description.en : 'Please describe'
+                            .resume-form-field(contentEditable="", data-prop="description.en")= item ? item.description.en : 'Please describe'
 
                 .well
                     .row

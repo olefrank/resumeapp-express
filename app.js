@@ -11,8 +11,13 @@ const flash         = require('connect-flash');
 const toastr        = require('express-toastr');
 const morgan        = require('morgan');
 const session       = require('express-session');
-const app           = express();
 const moment        = require('moment');
+const cacheBust     = require('cache-busted');
+const app           = express();
+
+// cache buster
+cacheBust.handler(app);
+
 
 
 // set moment locale 'danish'

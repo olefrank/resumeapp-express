@@ -18,7 +18,10 @@ const gulp = require("gulp"),
       duration = require('gulp-duration'),
       stripDebug = require('gulp-strip-debug'),
       changed = require('gulp-changed'),
-      imagemin = require('gulp-imagemin');
+      imagemin = require('gulp-imagemin'),
+      LessPluginAutoPrefix = require('less-plugin-autoprefix'),
+      autoprefix = new LessPluginAutoPrefix({browsers: ["last 2 versions"]});
+
 
 
 
@@ -62,8 +65,8 @@ const mapError = (err) => {
 };
 
 // Completes the final file outputs
-var bundle = function(bundler) {
-    var bundleTimer = duration('Javascript bundle time');
+const bundle = function(bundler) {
+    const bundleTimer = duration('Javascript bundle time');
     bundler
         .bundle()
         .on('error', mapError) // Map error reporting
@@ -119,7 +122,7 @@ gulp.task('imagemin', function() {
 gulp.task("less", function(){
     return gulp.src(config.paths.less.src)
         .pipe(sourcemaps.init())
-        .pipe(less())
+        .pipe(less({ plugins: [autoprefix] }))
         .pipe(concat("main.min.css"))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(config.paths.less.dest));

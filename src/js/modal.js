@@ -30,7 +30,7 @@ exports = function() {
             //if (exp.school) modalBody.find('#school').text(exp.school).show();
             //else modalBody.find('#school').hide();
 
-            if (exp.description) modalBody.find('#description').text(exp.description).show();
+            if (exp.description) modalBody.find('#description').html(exp.description).show();
             else modalBody.find('#description').hide();
 
             if (exp.start) modalBody.find('#start').text(moment(exp.start).format('MMMM YYYY')).show();

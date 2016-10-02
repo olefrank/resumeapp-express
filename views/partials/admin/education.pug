@@ -23,6 +23,22 @@
                         .form-group
                             label Company
                             input.resume-form-field.form-control(data-prop="company.name.en", value= item ? item.company.name.da : '')
+                .row
+                    .col-xs-6
+                        .form-group
+                            label Kurser
+                            br
+                            textarea.resume-form-field.form-control(data-prop="courses.da", rows=12)
+                                each c in item.courses.da
+                                    | !{c}
+
+                    .col-xs-6
+                        .form-group
+                            label Subjects
+                            br
+                            textarea.resume-form-field.form-control(data-prop="courses.en", rows=12)
+                                each c in item.courses.en
+                                    | !{c}
 
                 .well
                     .row
@@ -35,6 +51,11 @@
                                 label End
                                 input.resume-form-field.form-control(type="date", data-prop="end", value=moment( item ? item.end : '' ).format('YYYY-MM-DD'))
                         .col-xs-4
+                            .form-group
+                                label Rating
+                                input.resume-form-field.form-control(type="number", min=1, max=5, data-prop="rating", value= item ? item.rating : '')
+                    .row
+                        .col-xs-12
                             .form-group
                                 label Logo
                                 input.resume-form-field.form-control(data-prop="company.logo", value= item ? item.company.logo : '')

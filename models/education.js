@@ -4,11 +4,10 @@ var Education = mongoose.Schema({
 
     title       : { da: String, en: String },
     company     : { name: { da: String, en: String }, logo: String },
-    major       : String,
-    grade       : String,
+    rating      : Number,
     start       : Date,
     end         : Date,
-    activities  : Array
+    courses     : { da: Array, en: Array }
 
 });
 

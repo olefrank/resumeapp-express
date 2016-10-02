@@ -146,6 +146,10 @@
     "languages": {
       "da": "Sprog",
       "en": "Languages"
+    },
+    "courses": {
+      "da": "Kurser",
+      "en": "Courses"
     }
   }
 }

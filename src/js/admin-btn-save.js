@@ -26,7 +26,7 @@ const btnSaveHandler = function (e) {
     if (!id) {
         if (confirm('Vil du gemme elementet?')) {
             // collect data
-            data = getData(form, false);
+            data = getData(form);
 
             $.ajax({
                 method: 'POST',
@@ -75,7 +75,9 @@ const getData = function(form, expandProps) {
     // collect data from each field
     $(form).find('.resume-form-field').each(function () {
         path = $(this).data('prop');
-        val = $(this).text() || $(this).attr('checked') || $(this).val();
+        val = $(this).val() || $(this).text() || $(this).attr('checked');
+
+        console.log($(this));
 
         // create nested structure
         if (expandProps) {

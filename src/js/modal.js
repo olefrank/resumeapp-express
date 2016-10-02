@@ -15,29 +15,38 @@ exports = function() {
             classlist = `modal-content panel-${type}`;
             modalContent.attr('class', classlist);
 
-            //get data-id attribute of the clicked element
-            let exp = $(e.relatedTarget).data('modal-data');
+            // grab item data
+            let item = $(e.relatedTarget).data('modal-data');
 
-            if (exp.title) modalContent.find('#title').text(exp.title).show();
+            // title
+            if (item.title) modalContent.find('#title').text(item.title).show();
             else modalContent.find('#title').hide();
 
-            //if (exp.degree) modalContent.find('#degree').text(exp.degree).show();
-            //else modalContent.find('#degree').hide();
-
-            if (exp.company) modalBody.find('#company').text(exp.company.name).show();
+            // company/school/organization
+            if (item.company) modalBody.find('#company').text(item.company.name).show();
             else modalBody.find('#company').hide();
 
-            //if (exp.school) modalBody.find('#school').text(exp.school).show();
-            //else modalBody.find('#school').hide();
-
-            if (exp.description) modalBody.find('#description').html(exp.description).show();
+            // description
+            if (item.description) modalBody.find('#description').html(item.description).show();
             else modalBody.find('#description').hide();
 
-            if (exp.start) modalBody.find('#start').text(moment(exp.start).format('MMMM YYYY')).show();
+            // start/end
+            if (item.start) modalBody.find('#start').text(moment(item.start).format('MMMM YYYY')).show();
             else modalBody.find('#start').hide();
-
-            if (exp.end) modalBody.find('#end').text(moment(exp.end).format('MMMM YYYY')).show();
+            if (item.end) modalBody.find('#end').text(moment(item.end).format('MMMM YYYY')).show();
             else modalBody.find('#end').hide();
+
+            // courses
+            let courseList = document.getElementById('courses');
+            if (item.courses) {
+                item.courses.forEach(function(title) {
+                    let course = document.createElement('li');
+                    course.textContent = title;
+                    courseList.appendChild(course);
+                });
+            }
+            else
+                modalBody.find('#courses, #courses-heading').hide();
         };
 
         // triggered on modal 'show'

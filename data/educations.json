@@ -11,21 +11,32 @@
       "da": "Datamatiker",
       "en": "Computer Science AP"
     },
-    "major": "",
-    "grade": "",
+    "rating": 5,
     "start": "2010-08-01",
     "end": "2014-02-01",
-    "activities": [
-      "JAVA Programming",
-      "JavaScript Programming",
-      "Android Programming",
-      ".NET Programming",
-      "Software Design and Analysis",
-      "Database Design",
-      "Computer Networks Distributed Systems and Security",
-      "Business and Information Technology",
-      "System Development Methodology"
-    ]
+    "courses": {
+      "da": [
+        "JAVA",
+        "JavaScript",
+        "Android",
+        ".NET",
+        "Software Design og Analyse (OOA/D)",
+        "System Udviklings Metoder",
+        "Database Design og optimering",
+        "Netværk, sikkerhed og Distribuerede systemer",
+        "Organisationer and Informationsteknologi"
+      ],
+      "en": [
+        "JAVA",
+        "JavaScript",
+        "Android",
+        ".NET",
+        "Software Design and Analysis (OOA/D)",
+        "Database Design and Optimization",
+        "Computer Networks Distributed Systems and Security",
+        "Business and Information Technology"
+      ]
+    }
   },
   {
     "company": {
@@ -39,18 +50,27 @@
       "da": "Cand.it Informationsvidenskab (IT i organisationer)",
       "en": "MSc Information Science (incomplete)"
     },
-    "major": "",
-    "grade": "",
+    "rating": 5,
     "start": "2009-08-01",
     "end": "2010-07-01",
-    "activities": [
-      "Corporate Communication",
-      "Organization Analysis",
-      "\"Information Society & Technology\"",
-      "OOA/D",
-      "Introduction To Object Oriented Proramming (Java)",
-      "Web Development"
-    ]
+    "courses": {
+      "da": [
+        "Kommunikation i Organisationer",
+        "Organisationsanalyse",
+        "\"Information, Samfund og Teknologi\"",
+        "Objekt Orienteret Analyse og Design (OOA/D)",
+        "Introduktion til Objekt Orienteret programmering (Java)",
+        "Web udvikling"
+      ],
+      "en": [
+        "Corporate Communication",
+        "Organization Analysis",
+        "\"Information Society & Technology\"",
+        "Object Oriented Analysis and Design (OOA/D)",
+        "Introduction To Object Oriented Proramming (Java)",
+        "Web Development"
+      ]
+    }
   },
   {
     "company": {
@@ -64,22 +84,34 @@
       "da": "Rytmisk trompetist",
       "en": "Jazz Trumpet"
     },
-    "major": "",
-    "grade": "",
+    "rating": 5,
     "start": "2003-08-01",
     "end": "2007-07-01",
-    "activities": [
-      "Improvisation",
-      "Composition",
-      "Big Band Conduction and Arranging",
-      "Pedagogy Theory",
-      "Psycology in Learning",
-      "Situations",
-      "Piano lessons",
-      "Ear training",
-      "Jazz Theory and Analysis",
-      "Musical history"
-    ]
+    "courses": {
+      "da": [
+        "Improvisation",
+        "Komposition",
+        "Big Band: direktion og arrangement",
+        "Pædagogisk teori",
+        "Psykologi i læringssituationer",
+        "Sang, Spil og Bevægelse",
+        "Klaver (bifag)",
+        "Hørelære",
+        "Jazz teori og analyse",
+        "Musikhistorie"
+      ],
+      "en": [
+        "Improvisation",
+        "Composition",
+        "Big Band Conduction and Arrangement",
+        "Pedagogy Theory",
+        "Psycology in Learning Situations",
+        "Piano lessons",
+        "Ear training",
+        "Jazz Theory and Analysis",
+        "Musical history"
+      ]
+    }
   },
   {
     "company": {
@@ -93,11 +125,12 @@
       "da": "BA Musikvidenskab",
       "en": "BA Musicology"
     },
-    "major": "",
-    "grade": "",
+    "rating": 5,
     "start": "1999-08-01",
     "end": "2003-07-01",
-    "activities": [
-    ]
+    "courses": {
+      "da": [],
+      "en": []
+    }
   }
 ]

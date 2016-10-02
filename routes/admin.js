@@ -7,6 +7,7 @@ const express = require('express'),
       isLoggedIn = require('./middleware/isLoggedIn'),
       isAuthorized = require('./middleware/isAuthorized'),
       updateSchema = require('./helpers/updateSchema'),
+      transformCourses = require('./helpers/transformCourses'),
       CustomError = require('./custom-error'),
       models = require('../models');
 
@@ -18,7 +19,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
 
             // render in template
             res.render('admin', {
-                educations      : data.education,
+                educations      : transformCourses.addNewline(data.education),
                 experiences     : data.experience,
                 languages       : data.language,
                 projects        : data.project,
@@ -38,7 +39,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
 
 router.put('/', [isLoggedIn, isAuthorized], function (req, res, next) {
     let msg;
-    const data = req.body;
+    let data = req.body;
     const section = data.section;
     const _id = data._id;
 
@@ -49,6 +50,11 @@ router.put('/', [isLoggedIn, isAuthorized], function (req, res, next) {
 
     // get model
     const model = models[section];
+
+    // transform data
+    if (section === 'education') {
+        data = transformCourses.toArray(data);
+    }
 
     // find
     model.findById(_id, function (err, result) {

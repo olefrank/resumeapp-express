@@ -75,9 +75,7 @@ const getData = function(form, expandProps) {
     // collect data from each field
     $(form).find('.resume-form-field').each(function () {
         path = $(this).data('prop');
-        val = $(this).val() || $(this).text() || $(this).attr('checked');
-
-        console.log($(this));
+        val = getInputValue($(this));
 
         // create nested structure
         if (expandProps) {
@@ -104,4 +102,25 @@ const expandObject = function(obj, path, value) {
     }
     schema[arr[len - 1]] = value;
     return schema;
-}
+};
+
+const getInputValue = function(input) {
+    const type = input[0].type;
+    let result;
+
+    switch (type) {
+        case "checkbox":
+            result = input.is(':checked');
+            break;
+        case undefined: // div
+            result = input.text();
+            break;
+        default:
+            result = input.val();
+            break;
+    }
+
+    console.log(type, result);
+
+    return result;
+};

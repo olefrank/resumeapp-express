@@ -37,16 +37,20 @@ exports = function() {
             else modalBody.find('#end').hide();
 
             // courses
-            let courseList = document.getElementById('courses');
+            let coursesList = modalBody.find('#courses-list');
+
+            // clean 'courses' list
+            coursesList.empty();
+
             if (item.courses) {
+                // insert courses in list
                 item.courses.forEach(function(title) {
-                    let course = document.createElement('li');
-                    course.textContent = title;
-                    courseList.appendChild(course);
+                    coursesList.append( $('<li>' + title + '</li>') );
                 });
             }
-            else
-                modalBody.find('#courses, #courses-heading').hide();
+            else {
+                modalBody.find('#courses').empty();
+            }
         };
 
         // triggered on modal 'show'

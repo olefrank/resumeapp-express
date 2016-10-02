@@ -38,18 +38,18 @@ exports = function() {
 
             // courses
             let coursesList = modalBody.find('#courses-list');
+            let coursesHeading = modalBody.find('#courses-heading');
 
             // clean 'courses' list
+            coursesHeading.hide();
             coursesList.empty();
 
+            // show 'courses' heading and list of courses
             if (item.courses) {
-                // insert courses in list
+                coursesHeading.show();
                 item.courses.forEach(function(title) {
                     coursesList.append( $('<li>' + title + '</li>') );
                 });
-            }
-            else {
-                modalBody.find('#courses').empty();
             }
         };
 

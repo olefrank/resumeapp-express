@@ -120,7 +120,5 @@ const getInputValue = function(input) {
             break;
     }
 
-    console.log(type, result);
-
     return result;
 };

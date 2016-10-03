@@ -1,11 +1,19 @@
 a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.project)
     .panel.panel-hover(class='panel-' + config.colors.project)
+
         .panel-heading
             h3.panel-title= item.title
+
         .panel-body
-            if item.start
-                p.text-dimmed
-                    if item.end
-                        em #{moment(item.start).format('MMMM YYYY')} - #{moment(item.end).format('MMMM YYYY')}
-                    else
-                        em #{moment(item.start).format('MMMM YYYY')} -
+            .panel-body-image.pull-right
+                img(src=item.company.logo)
+
+            .panel-body-text
+
+                if item.start
+                    p.text-dimmed
+
+                        if item.end
+                            em #{moment(item.start).format('MMMM YYYY')} - #{moment(item.end).format('MMMM YYYY')}
+                        else
+                            em #{moment(item.start).format('MMMM YYYY')} -

@@ -7,9 +7,6 @@ module.exports = {
     session: {
         secret: "olebolegikiskole"
     },
-    urls: {
-        base: "/resume"
-    },
     colors: {
         profile: "success",
         current: "danger",

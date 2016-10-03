@@ -1,16 +1,14 @@
 const express = require('express'),
-      router = express.Router(),
-      baseUrl = require('../config/app.config').urls.base;
+      router = express.Router();
 
 module.exports = function(passport) {
 
-    router.use('/', require('./root'));
-    router.use(baseUrl, require('./resume'));
-    router.use(`${baseUrl}/login`, require('./login')(passport));
-    router.use(`${baseUrl}/logout`, require('./logout'));
-    router.use(`${baseUrl}/admin`, require('./admin'));
-    router.use(`${baseUrl}/lang`, require('./lang'));
-    router.use(`${baseUrl}/templates`, require('./templates'));
+    router.use('/', require('./resume'));
+    router.use('/login', require('./login')(passport));
+    router.use('/logout', require('./logout'));
+    router.use('/admin', require('./admin'));
+    router.use('/lang', require('./lang'));
+    router.use('/templates', require('./templates'));
 
     return router
 

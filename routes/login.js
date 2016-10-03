@@ -1,17 +1,16 @@
 const express = require('express'),
       router = express.Router(),
-      config = require('../config/app.config'),
-      baseUrl = config.urls.base;
+      config = require('../config/app.config');
 
 module.exports = function(passport) {
 
     router.get('/', function (req, res) {
-        res.render('login', {message: req.flash('loginMessage'), baseUrl: baseUrl});
+        res.render('login', {message: req.flash('loginMessage')});
     });
 
     router.post('/', passport.authenticate('local-login', {
-        successRedirect: `${baseUrl}/admin`,
-        failureRedirect: `${baseUrl}/login`,
+        successRedirect: `/admin`,
+        failureRedirect: `/login`,
         failureFlash: true
     }));
 

@@ -1,6 +1,6 @@
 const $ = require('jquery');
 const toastr = require('toastr');
-const url = "/resume/admin";
+const url = "/admin";
 
 exports = function() {
 
@@ -22,6 +22,7 @@ const btnSaveHandler = function (e) {
     // elem id
     let id = form.attr('id');
 
+    console.log("url",url);
     // create new elem
     if (!id) {
         if (confirm('Vil du gemme elementet?')) {

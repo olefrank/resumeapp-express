@@ -5,7 +5,9 @@
         "da": "Erhvervsakademi Aarhus",
         "en": "Business Academy Aarhus"
       },
-      "logo": ""
+      "logo": "",
+      "link": "http://www.eaaa.dk/"
+      
     },
     "title": {
       "da": "Datamatiker",
@@ -44,7 +46,8 @@
         "da": "Aarhus Universitet",
         "en": "Aarhus University"
       },
-      "logo": ""
+      "logo": "",
+      "link": "http://www.au.dk"
     },
     "title": {
       "da": "Cand.it Informationsvidenskab (IT i organisationer)",
@@ -78,7 +81,8 @@
         "da": "Det Jyske Musikkonservatorium",
         "en": "Royal Academy Of Music"
       },
-      "logo": ""
+      "logo": "",
+      "link": "http://www.djm.dk"
     },
     "title": {
       "da": "Rytmisk trompetist",
@@ -119,7 +123,8 @@
         "da": "Aarhus Universitet",
         "en": "Aarhus University"
       },
-      "logo": ""
+      "logo": "",
+      "link": "http://www.au.dk"
     },
     "title": {
       "da": "BA Musikvidenskab",

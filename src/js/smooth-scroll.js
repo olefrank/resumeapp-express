@@ -11,6 +11,7 @@ exports = function() {
 
                 // switch active class
                 $('.active').removeClass('active');
+                //$('.navbar').find(`a[href*='${this.hash}']`).closest('li').addClass('active');
                 target.parent().addClass('active');
 
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');

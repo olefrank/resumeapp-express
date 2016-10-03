@@ -19,7 +19,6 @@ const app           = express();
 cacheBust.handler(app);
 
 
-
 // set moment locale 'danish'
 require('moment/locale/da');
 
@@ -27,7 +26,6 @@ require('moment/locale/da');
 // make variables available in templates
 app.locals.moment = moment;
 app.locals.config = {
-    baseUrl: appconfig.urls.base,
     colors: appconfig.colors
 };
 

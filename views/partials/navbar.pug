@@ -14,10 +14,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                     each item, index in strings.navbar
                         if (index === 0)
                             li.active
-                                a(href= config.baseUrl + item.link)= item.name
+                                a(href= item.link)= item.name
                         else
                             li
-                                a(href= config.baseUrl + item.link)= item.name
+                                a(href= item.link)= item.name
 
                 ul.nav.navbar-nav.navbar-right
                     include lang
@@ -25,6 +25,6 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             else
                 ul.nav.navbar-nav.navbar-right
                     li
-                        a(href= config.baseUrl + '/logout')
+                        a(href= '/logout')
                             | Logout
                         span.sr-only

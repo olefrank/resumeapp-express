@@ -1,6 +1,6 @@
 const $ = require('jquery');
 const toastr = require('toastr');
-const url = "/resume/admin";
+const url = "/admin";
 
 exports = function() {
 

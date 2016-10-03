@@ -9,7 +9,8 @@
         "da": "Danmarks Radio",
         "en": "Danmarks Radio"
       },
-      "logo": "https://media.licdn.com/media/p/1/005/019/088/1f56be1.png"
+      "logo": "https://media.licdn.com/media/p/1/005/019/088/1f56be1.png",
+      "link": "http://www.dr.dk"
     },
     "locality": {
       "da": "Danmark",
@@ -33,7 +34,8 @@
         "da": "JP/Politikens Hus A/S",
         "en": "JP/Politikens Hus A/S"
       },
-      "logo": "https://media.licdn.com/media/p/4/005/046/10d/2a01c31.png"
+      "logo": "https://media.licdn.com/media/p/4/005/046/10d/2a01c31.png",
+      "link": "http://www.au.dk"
     },
     "locality": {
       "da": "Danmark",

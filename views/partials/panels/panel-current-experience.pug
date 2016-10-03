@@ -5,11 +5,16 @@ if item.currentPosition
                 h3.panel-title= item.title
             .panel-body
                 if item.company
-                    p
-                        strong= item.company.name
-                    if item.start
-                        p.text-dimmed
-                            if item.end
-                                em #{moment(item.start).format('MMMM YYYY')} - #{moment(item.end).format('MMMM YYYY')}
-                            else
-                                em #{moment(item.start).format('MMMM YYYY')} -
+                    .panel-body-image.pull-right
+                        img(src=item.company.logo)
+                    .panel-body-text
+                        p
+                            strong= item.company.name
+                        if item.start
+                            p.text-dimmed
+                                if item.end
+                                    em #{moment(item.start).format('MMMM YYYY')} - #{moment(item.end).format('MMMM YYYY')}
+                                else
+                                    em #{moment(item.start).format('MMMM YYYY')} -
+
+            //.panel-logo.pull-right( style='background-image:url(images/jppol-logo.png); background-size:cover' )

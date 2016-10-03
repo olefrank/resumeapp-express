@@ -125,11 +125,9 @@ router.delete('/', [isLoggedIn, isAuthorized], function (req, res, next) {
     // delete in db
     db.delete(model, _id)
         .then(function(data) {
-            console.log("i then", data);
             return next(new CustomError(data, 200));
         })
         .catch(function(err) {
-            console.log("i catch", err);
             console.log(err); // ofj: use proper logger
             return next(new CustomError(err, 500));
         });

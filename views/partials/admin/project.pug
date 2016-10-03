@@ -37,18 +37,23 @@
 
                 .well
                     .row
-                        .col-xs-4
+                        .col-xs-3
                             .form-group
                                 label Start
                                 input.resume-form-field.form-control(type="date", data-prop="start", value=moment(item ? item.start : '').format('YYYY-MM-DD'))
-                        .col-xs-4
+                        .col-xs-3
                             .form-group
                                 label End
                                 input.resume-form-field.form-control(type="date", data-prop="end", value=moment(item ? item.end : '').format('YYYY-MM-DD'))
-                        .col-xs-4
+                    .row
+                        .col-xs-6
                             .form-group
                                 label Logo
                                 input.resume-form-field.form-control(data-prop="company.logo", value= item ? item.company.logo : '')
+                        .col-xs-6
+                            .form-group
+                                label Link
+                                input.resume-form-field.form-control(data-prop="company.link", value= item ? item.company.link : '')
 
                 .btn-toolbar
                     button.btn.btn-success.btn-admin-save(type='button') Gem

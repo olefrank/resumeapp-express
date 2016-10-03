@@ -1,4 +1,4 @@
-a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.project)
+.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.project)
     .panel.panel-hover(class='panel-' + config.colors.project)
 
         .panel-heading
@@ -6,7 +6,8 @@ a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-p
 
         .panel-body
             .panel-body-image.pull-right
-                img(src=item.company.logo)
+                a(href=item.company.link, target="_blank")
+                    img(src=item.company.logo)
 
             .panel-body-text
 

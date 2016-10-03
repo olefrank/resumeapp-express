@@ -1,11 +1,12 @@
-a(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.education)
+.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.education)
     .panel.panel-hover(class='panel-' + config.colors.education)
         .panel-heading
             h3.panel-title= item.title
         .panel-body
             if item.company
                 .panel-body-image.pull-right
-                    img(src=item.company.logo)
+                    a(href=item.company.link, target="_blank")
+                        img(src=item.company.logo)
                 .panel-body-text
                     p
                         strong= item.company.name

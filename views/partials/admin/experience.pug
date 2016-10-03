@@ -60,10 +60,14 @@
                                 label
                                     input.resume-form-field(type='checkbox', checked= item ? item.currentPosition : '', data-prop="currentPosition")
                                     |  Nuværende job
-                        .col-xs-12
+                        .col-xs-6
                             .form-group
                                 label Logo
                                 input.resume-form-field.form-control(data-prop="company.logo", value= item ? item.company.logo : '')
+                        .col-xs-6
+                            .form-group
+                                label Link
+                                input.resume-form-field.form-control(data-prop="company.link", value= item ? item.company.link : '')
 
                 .btn-toolbar
                     button.btn.btn-success.btn-admin-save(type='button') Gem

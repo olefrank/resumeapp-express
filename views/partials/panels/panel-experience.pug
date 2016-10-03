@@ -1,6 +1,5 @@
 if !item.currentPosition
-    a.resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.experience)
-
+    .resume-component(data-toggle='modal', data-target='#resume-modal', data-modal-data=item, data-panel-type=config.colors.experience)
         .panel.panel-hover(class='panel-' + config.colors.experience)
 
             .panel-heading
@@ -10,7 +9,8 @@ if !item.currentPosition
                 if item.company
 
                     .panel-body-image.pull-right
-                        img(src=item.company.logo)
+                        a(href=item.company.link, target="_blank")
+                            img(src=item.company.logo)
 
                     .panel-body-text
                         p

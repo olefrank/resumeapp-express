@@ -22,6 +22,3 @@ https://www.youtube.com/watch?v=hQxFymzhT3A
 express structure:
 http://stackoverflow.com/a/29852807/1736012
 https://www.terlici.com/2014/08/25/best-practices-express-structure.html
-
-mongo cmds:
-mongoimport -d olefrank-resume -c volounteerings --jsonArray < volounteerings.json
